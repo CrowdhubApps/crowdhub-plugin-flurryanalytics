@@ -39,7 +39,7 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
 
         let crashReportingEnabled = call.getBool("crashReportingEnabled", true)
         let appVersion = call.getString("appVersion", "1.0")
-        let iapReportingEnabled = call.getBool("iapReportingEnabled", true)
+        let iapReportingEnabled = call.getBool("iapReportingEnabled", false)
 
         let sb = FlurrySessionBuilder()
             .build(logLevel: logLevel)
