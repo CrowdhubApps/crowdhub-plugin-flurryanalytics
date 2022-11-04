@@ -15,7 +15,6 @@
 		50ADFF99201F53D600D50D53 /* FlurryAnalyticsPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ADFF8B201F53D600D50D53 /* FlurryAnalyticsPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50ADFFA42020D75100D50D53 /* Capacitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFFA52020D75100D50D53 /* Capacitor.framework */; };
 		50ADFFA82020EE4F00D50D53 /* FlurryAnalyticsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 50ADFFA72020EE4F00D50D53 /* FlurryAnalyticsPlugin.m */; };
-		50E1A94820377CB70090CE1A /* FlurryAnalyticsPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1A94720377CB70090CE1A /* FlurryAnalyticsPlugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -306,7 +305,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50E1A94820377CB70090CE1A /* FlurryAnalyticsPlugin.swift in Sources */,
 				2F98D68224C9AAE500613A4C /* FlurryAnalytics.swift in Sources */,
 				50ADFFA82020EE4F00D50D53 /* FlurryAnalyticsPlugin.m in Sources */,
 			);
