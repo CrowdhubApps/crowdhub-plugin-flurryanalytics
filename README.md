@@ -51,16 +51,12 @@ npx cap sync
 ### initialize(...)
 
 ```typescript
-initialize(apiKey: string, logLevel?: "error" | "warn" | "info" | "verbose" | "debug" | undefined, crashReportingEnabled?: boolean | undefined, appVersion?: string | undefined, iapReportingEnabled?: boolean | undefined) => Promise<{ value: string; }>
+initialize(opts: { apiKey: string; logLevel?: 'verbose' | 'debug' | 'info' | 'warn' | 'error'; crashReportingEnabled?: boolean; appVersion?: string; iapReportingEnabled?: boolean; }) => Promise<{ value: string; }>
 ```
 
-| Param                       | Type                                                             |
-| --------------------------- | ---------------------------------------------------------------- |
-| **`apiKey`**                | <code>string</code>                                              |
-| **`logLevel`**              | <code>'error' \| 'warn' \| 'info' \| 'verbose' \| 'debug'</code> |
-| **`crashReportingEnabled`** | <code>boolean</code>                                             |
-| **`appVersion`**            | <code>string</code>                                              |
-| **`iapReportingEnabled`**   | <code>boolean</code>                                             |
+| Param      | Type                                                                                                                                                                                  |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`opts`** | <code>{ apiKey: string; logLevel?: 'error' \| 'warn' \| 'info' \| 'verbose' \| 'debug'; crashReportingEnabled?: boolean; appVersion?: string; iapReportingEnabled?: boolean; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 

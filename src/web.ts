@@ -6,13 +6,13 @@ export class FlurryAnalyticsWeb
   extends WebPlugin
   implements FlurryAnalyticsPlugin
 {
-  initialize(
-    apiKey: string,
-    logLevel?: 'verbose' | 'debug' | 'info' | 'warn' | 'error' | undefined,
-    crashReportingEnabled?: boolean | undefined,
-    appVersion?: string | undefined,
-    iapReportingEnabled?: boolean | undefined,
-  ): Promise<{ value: string }> {
+  initialize(opts: {
+    apiKey: string;
+    logLevel?: 'verbose' | 'debug' | 'info' | 'warn' | 'error' | undefined;
+    crashReportingEnabled?: boolean | undefined;
+    appVersion?: string | undefined;
+    iapReportingEnabled?: boolean | undefined;
+  }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
   logContentRated(

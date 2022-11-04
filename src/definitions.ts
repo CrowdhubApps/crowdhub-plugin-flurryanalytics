@@ -1,11 +1,11 @@
 export interface FlurryAnalyticsPlugin {
-  initialize(
-    apiKey: string,
-    logLevel?: 'verbose' | 'debug' | 'info' | 'warn' | 'error',
-    crashReportingEnabled?: boolean,
-    appVersion?: string,
-    iapReportingEnabled?: boolean,
-  ): Promise<{ value: string }>;
+  initialize(opts: {
+    apiKey: string;
+    logLevel?: 'verbose' | 'debug' | 'info' | 'warn' | 'error';
+    crashReportingEnabled?: boolean;
+    appVersion?: string;
+    iapReportingEnabled?: boolean;
+  }): Promise<{ value: string }>;
 
   logContentRated(
     contentId: string,
