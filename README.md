@@ -66,15 +66,12 @@ initialize(opts: { apiKey: string; logLevel?: 'verbose' | 'debug' | 'info' | 'wa
 ### logContentRated(...)
 
 ```typescript
-logContentRated(contentId: string, contentRating: string, contentName?: string | undefined, contentType?: string | undefined) => Promise<{ value: string; }>
+logContentRated(opts: { contentId: string; contentRating: string; contentName?: string; contentType?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param               | Type                |
-| ------------------- | ------------------- |
-| **`contentId`**     | <code>string</code> |
-| **`contentRating`** | <code>string</code> |
-| **`contentName`**   | <code>string</code> |
-| **`contentType`**   | <code>string</code> |
+| Param      | Type                                                                                                   |
+| ---------- | ------------------------------------------------------------------------------------------------------ |
+| **`opts`** | <code>{ contentId: string; contentRating: string; contentName?: string; contentType?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -84,14 +81,12 @@ logContentRated(contentId: string, contentRating: string, contentName?: string |
 ### logContentViewed(...)
 
 ```typescript
-logContentViewed(contentId: string, contentName?: string | undefined, contentType?: string | undefined) => Promise<{ value: string; }>
+logContentViewed(opts: { contentId: string; contentName?: string; contentType?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param             | Type                |
-| ----------------- | ------------------- |
-| **`contentId`**   | <code>string</code> |
-| **`contentName`** | <code>string</code> |
-| **`contentType`** | <code>string</code> |
+| Param      | Type                                                                            |
+| ---------- | ------------------------------------------------------------------------------- |
+| **`opts`** | <code>{ contentId: string; contentName?: string; contentType?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -101,14 +96,12 @@ logContentViewed(contentId: string, contentName?: string | undefined, contentTyp
 ### logContentSaved(...)
 
 ```typescript
-logContentSaved(contentId: string, contentName?: string | undefined, contentType?: string | undefined) => Promise<{ value: string; }>
+logContentSaved(opts: { contentId: string; contentName?: string; contentType?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param             | Type                |
-| ----------------- | ------------------- |
-| **`contentId`**   | <code>string</code> |
-| **`contentName`** | <code>string</code> |
-| **`contentType`** | <code>string</code> |
+| Param      | Type                                                                            |
+| ---------- | ------------------------------------------------------------------------------- |
+| **`opts`** | <code>{ contentId: string; contentName?: string; contentType?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -129,17 +122,12 @@ logProductCustomized() => Promise<{ value: string; }>
 ### logSubscriptionStarted(...)
 
 ```typescript
-logSubscriptionStarted(price: number, isAnnualSubscribtion: boolean, trialDays?: number | undefined, predictedLTV?: string | undefined, currencyType?: string | undefined, subscriptionCountry?: string | undefined) => Promise<{ value: string; }>
+logSubscriptionStarted(opts: { price: number; isAnnualSubscribtion: boolean; trialDays?: number; predictedLTV?: string; currencyType?: string; subscriptionCountry?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param                      | Type                 |
-| -------------------------- | -------------------- |
-| **`price`**                | <code>number</code>  |
-| **`isAnnualSubscribtion`** | <code>boolean</code> |
-| **`trialDays`**            | <code>number</code>  |
-| **`predictedLTV`**         | <code>string</code>  |
-| **`currencyType`**         | <code>string</code>  |
-| **`subscriptionCountry`**  | <code>string</code>  |
+| Param      | Type                                                                                                                                                           |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`opts`** | <code>{ price: number; isAnnualSubscribtion: boolean; trialDays?: number; predictedLTV?: string; currencyType?: string; subscriptionCountry?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -149,14 +137,12 @@ logSubscriptionStarted(price: number, isAnnualSubscribtion: boolean, trialDays?:
 ### logSubscriptionEnded(...)
 
 ```typescript
-logSubscriptionEnded(isAnnualSubscribtion: boolean, currencyType?: string | undefined, subscriptionCountry?: string | undefined) => Promise<{ value: string; }>
+logSubscriptionEnded(opts: { isAnnualSubscribtion: boolean; currencyType?: string; subscriptionCountry?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param                      | Type                 |
-| -------------------------- | -------------------- |
-| **`isAnnualSubscribtion`** | <code>boolean</code> |
-| **`currencyType`**         | <code>string</code>  |
-| **`subscriptionCountry`**  | <code>string</code>  |
+| Param      | Type                                                                                                 |
+| ---------- | ---------------------------------------------------------------------------------------------------- |
+| **`opts`** | <code>{ isAnnualSubscribtion: boolean; currencyType?: string; subscriptionCountry?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -166,12 +152,12 @@ logSubscriptionEnded(isAnnualSubscribtion: boolean, currencyType?: string | unde
 ### logGroupJoined(...)
 
 ```typescript
-logGroupJoined(groupName?: string | undefined) => Promise<{ value: string; }>
+logGroupJoined(opts: { groupName?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param           | Type                |
-| --------------- | ------------------- |
-| **`groupName`** | <code>string</code> |
+| Param      | Type                                 |
+| ---------- | ------------------------------------ |
+| **`opts`** | <code>{ groupName?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -181,12 +167,12 @@ logGroupJoined(groupName?: string | undefined) => Promise<{ value: string; }>
 ### logGroupLeft(...)
 
 ```typescript
-logGroupLeft(groupName?: string | undefined) => Promise<{ value: string; }>
+logGroupLeft(opts: { groupName?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param           | Type                |
-| --------------- | ------------------- |
-| **`groupName`** | <code>string</code> |
+| Param      | Type                                 |
+| ---------- | ------------------------------------ |
+| **`opts`** | <code>{ groupName?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -196,13 +182,12 @@ logGroupLeft(groupName?: string | undefined) => Promise<{ value: string; }>
 ### logLogin(...)
 
 ```typescript
-logLogin(userId?: string | undefined, method?: string | undefined) => Promise<{ value: string; }>
+logLogin(opts: { userId?: string; method?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param        | Type                |
-| ------------ | ------------------- |
-| **`userId`** | <code>string</code> |
-| **`method`** | <code>string</code> |
+| Param      | Type                                               |
+| ---------- | -------------------------------------------------- |
+| **`opts`** | <code>{ userId?: string; method?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -212,13 +197,12 @@ logLogin(userId?: string | undefined, method?: string | undefined) => Promise<{ 
 ### logLogout(...)
 
 ```typescript
-logLogout(userId?: string | undefined, method?: string | undefined) => Promise<{ value: string; }>
+logLogout(opts: { userId?: string; method?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param        | Type                |
-| ------------ | ------------------- |
-| **`userId`** | <code>string</code> |
-| **`method`** | <code>string</code> |
+| Param      | Type                                               |
+| ---------- | -------------------------------------------------- |
+| **`opts`** | <code>{ userId?: string; method?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -228,13 +212,12 @@ logLogout(userId?: string | undefined, method?: string | undefined) => Promise<{
 ### logUserRegistered(...)
 
 ```typescript
-logUserRegistered(userId?: string | undefined, method?: string | undefined) => Promise<{ value: string; }>
+logUserRegistered(opts: { userId?: string; method?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param        | Type                |
-| ------------ | ------------------- |
-| **`userId`** | <code>string</code> |
-| **`method`** | <code>string</code> |
+| Param      | Type                                               |
+| ---------- | -------------------------------------------------- |
+| **`opts`** | <code>{ userId?: string; method?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -244,13 +227,12 @@ logUserRegistered(userId?: string | undefined, method?: string | undefined) => P
 ### logSearchResultViewed(...)
 
 ```typescript
-logSearchResultViewed(query?: string | undefined, searchType?: string | undefined) => Promise<{ value: string; }>
+logSearchResultViewed(opts: { query?: string; searchType?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param            | Type                |
-| ---------------- | ------------------- |
-| **`query`**      | <code>string</code> |
-| **`searchType`** | <code>string</code> |
+| Param      | Type                                                  |
+| ---------- | ----------------------------------------------------- |
+| **`opts`** | <code>{ query?: string; searchType?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -260,13 +242,12 @@ logSearchResultViewed(query?: string | undefined, searchType?: string | undefine
 ### logKeywordSearched(...)
 
 ```typescript
-logKeywordSearched(query?: string | undefined, searchType?: string | undefined) => Promise<{ value: string; }>
+logKeywordSearched(opts: { query?: string; searchType?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param            | Type                |
-| ---------------- | ------------------- |
-| **`query`**      | <code>string</code> |
-| **`searchType`** | <code>string</code> |
+| Param      | Type                                                  |
+| ---------- | ----------------------------------------------------- |
+| **`opts`** | <code>{ query?: string; searchType?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -276,12 +257,12 @@ logKeywordSearched(query?: string | undefined, searchType?: string | undefined) 
 ### logLocationSearched(...)
 
 ```typescript
-logLocationSearched(query?: string | undefined) => Promise<{ value: string; }>
+logLocationSearched(opts: { query?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param       | Type                |
-| ----------- | ------------------- |
-| **`query`** | <code>string</code> |
+| Param      | Type                             |
+| ---------- | -------------------------------- |
+| **`opts`** | <code>{ query?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -291,13 +272,12 @@ logLocationSearched(query?: string | undefined) => Promise<{ value: string; }>
 ### logInvite(...)
 
 ```typescript
-logInvite(userId?: string | undefined, method?: string | undefined) => Promise<{ value: string; }>
+logInvite(opts: { userId?: string; method?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param        | Type                |
-| ------------ | ------------------- |
-| **`userId`** | <code>string</code> |
-| **`method`** | <code>string</code> |
+| Param      | Type                                               |
+| ---------- | -------------------------------------------------- |
+| **`opts`** | <code>{ userId?: string; method?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -307,14 +287,12 @@ logInvite(userId?: string | undefined, method?: string | undefined) => Promise<{
 ### logShare(...)
 
 ```typescript
-logShare(socialContentId: string, socialContentName?: string | undefined, method?: string | undefined) => Promise<{ value: string; }>
+logShare(opts: { socialContentId: string; socialContentName?: string; method?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param                   | Type                |
-| ----------------------- | ------------------- |
-| **`socialContentId`**   | <code>string</code> |
-| **`socialContentName`** | <code>string</code> |
-| **`method`**            | <code>string</code> |
+| Param      | Type                                                                                   |
+| ---------- | -------------------------------------------------------------------------------------- |
+| **`opts`** | <code>{ socialContentId: string; socialContentName?: string; method?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -324,14 +302,12 @@ logShare(socialContentId: string, socialContentName?: string | undefined, method
 ### logLike(...)
 
 ```typescript
-logLike(socialContentId: string, socialContentName?: string | undefined, likeType?: string | undefined) => Promise<{ value: string; }>
+logLike(opts: { socialContentId: string; socialContentName?: string; likeType?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param                   | Type                |
-| ----------------------- | ------------------- |
-| **`socialContentId`**   | <code>string</code> |
-| **`socialContentName`** | <code>string</code> |
-| **`likeType`**          | <code>string</code> |
+| Param      | Type                                                                                     |
+| ---------- | ---------------------------------------------------------------------------------------- |
+| **`opts`** | <code>{ socialContentId: string; socialContentName?: string; likeType?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -341,13 +317,12 @@ logLike(socialContentId: string, socialContentName?: string | undefined, likeTyp
 ### logComment(...)
 
 ```typescript
-logComment(socialContentId: string, socialContentName?: string | undefined) => Promise<{ value: string; }>
+logComment(opts: { socialContentId: string; socialContentName?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param                   | Type                |
-| ----------------------- | ------------------- |
-| **`socialContentId`**   | <code>string</code> |
-| **`socialContentName`** | <code>string</code> |
+| Param      | Type                                                                  |
+| ---------- | --------------------------------------------------------------------- |
+| **`opts`** | <code>{ socialContentId: string; socialContentName?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -357,14 +332,12 @@ logComment(socialContentId: string, socialContentName?: string | undefined) => P
 ### logMediaCaptured(...)
 
 ```typescript
-logMediaCaptured(mediaId?: string | undefined, mediaName?: string | undefined, mediaType?: string | undefined) => Promise<{ value: string; }>
+logMediaCaptured(opts: { mediaId?: string; mediaName?: string; mediaType?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param           | Type                |
-| --------------- | ------------------- |
-| **`mediaId`**   | <code>string</code> |
-| **`mediaName`** | <code>string</code> |
-| **`mediaType`** | <code>string</code> |
+| Param      | Type                                                                       |
+| ---------- | -------------------------------------------------------------------------- |
+| **`opts`** | <code>{ mediaId?: string; mediaName?: string; mediaType?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -374,14 +347,12 @@ logMediaCaptured(mediaId?: string | undefined, mediaName?: string | undefined, m
 ### logMediaStarted(...)
 
 ```typescript
-logMediaStarted(mediaId?: string | undefined, mediaName?: string | undefined, mediaType?: string | undefined) => Promise<{ value: string; }>
+logMediaStarted(opts: { mediaId?: string; mediaName?: string; mediaType?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param           | Type                |
-| --------------- | ------------------- |
-| **`mediaId`**   | <code>string</code> |
-| **`mediaName`** | <code>string</code> |
-| **`mediaType`** | <code>string</code> |
+| Param      | Type                                                                       |
+| ---------- | -------------------------------------------------------------------------- |
+| **`opts`** | <code>{ mediaId?: string; mediaName?: string; mediaType?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -391,15 +362,12 @@ logMediaStarted(mediaId?: string | undefined, mediaName?: string | undefined, me
 ### logMediaStopped(...)
 
 ```typescript
-logMediaStopped(duration: number, mediaId?: string | undefined, mediaName?: string | undefined, mediaType?: string | undefined) => Promise<{ value: string; }>
+logMediaStopped(opts: { duration: number; mediaId?: string; mediaName?: string; mediaType?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param           | Type                |
-| --------------- | ------------------- |
-| **`duration`**  | <code>number</code> |
-| **`mediaId`**   | <code>string</code> |
-| **`mediaName`** | <code>string</code> |
-| **`mediaType`** | <code>string</code> |
+| Param      | Type                                                                                         |
+| ---------- | -------------------------------------------------------------------------------------------- |
+| **`opts`** | <code>{ duration: number; mediaId?: string; mediaName?: string; mediaType?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -409,15 +377,12 @@ logMediaStopped(duration: number, mediaId?: string | undefined, mediaName?: stri
 ### logMediaPaused(...)
 
 ```typescript
-logMediaPaused(duration: number, mediaId?: string | undefined, mediaName?: string | undefined, mediaType?: string | undefined) => Promise<{ value: string; }>
+logMediaPaused(opts: { duration: number; mediaId?: string; mediaName?: string; mediaType?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param           | Type                |
-| --------------- | ------------------- |
-| **`duration`**  | <code>number</code> |
-| **`mediaId`**   | <code>string</code> |
-| **`mediaName`** | <code>string</code> |
-| **`mediaType`** | <code>string</code> |
+| Param      | Type                                                                                         |
+| ---------- | -------------------------------------------------------------------------------------------- |
+| **`opts`** | <code>{ duration: number; mediaId?: string; mediaName?: string; mediaType?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -427,14 +392,12 @@ logMediaPaused(duration: number, mediaId?: string | undefined, mediaName?: strin
 ### logCustomEvent(...)
 
 ```typescript
-logCustomEvent(eventName: string, eventParams?: [Record<string, unknown>] | undefined, eventTimed?: boolean | undefined) => Promise<{ value: string; }>
+logCustomEvent(opts: { eventName: string; eventParams?: [Record<string, unknown>]; eventTimed?: boolean; }) => Promise<{ value: string; }>
 ```
 
-| Param             | Type                                         |
-| ----------------- | -------------------------------------------- |
-| **`eventName`**   | <code>string</code>                          |
-| **`eventParams`** | <code>[Record&lt;string, unknown&gt;]</code> |
-| **`eventTimed`**  | <code>boolean</code>                         |
+| Param      | Type                                                                                                     |
+| ---------- | -------------------------------------------------------------------------------------------------------- |
+| **`opts`** | <code>{ eventName: string; eventParams?: [Record&lt;string, unknown&gt;]; eventTimed?: boolean; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -444,12 +407,12 @@ logCustomEvent(eventName: string, eventParams?: [Record<string, unknown>] | unde
 ### setUserId(...)
 
 ```typescript
-setUserId(userId: string) => Promise<{ value: string; }>
+setUserId(opts: { userId: string; }) => Promise<{ value: string; }>
 ```
 
-| Param        | Type                |
-| ------------ | ------------------- |
-| **`userId`** | <code>string</code> |
+| Param      | Type                             |
+| ---------- | -------------------------------- |
+| **`opts`** | <code>{ userId: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -459,12 +422,12 @@ setUserId(userId: string) => Promise<{ value: string; }>
 ### setAge(...)
 
 ```typescript
-setAge(userAge: number) => Promise<{ value: string; }>
+setAge(opts: { userAge: number; }) => Promise<{ value: string; }>
 ```
 
-| Param         | Type                |
-| ------------- | ------------------- |
-| **`userAge`** | <code>number</code> |
+| Param      | Type                              |
+| ---------- | --------------------------------- |
+| **`opts`** | <code>{ userAge: number; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -474,12 +437,12 @@ setAge(userAge: number) => Promise<{ value: string; }>
 ### setGender(...)
 
 ```typescript
-setGender(userGender: 'm' | 'f') => Promise<{ value: string; }>
+setGender(opts: { userGender: 'm' | 'f'; }) => Promise<{ value: string; }>
 ```
 
-| Param            | Type                    |
-| ---------------- | ----------------------- |
-| **`userGender`** | <code>'m' \| 'f'</code> |
+| Param      | Type                                     |
+| ---------- | ---------------------------------------- |
+| **`opts`** | <code>{ userGender: 'm' \| 'f'; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -489,14 +452,12 @@ setGender(userGender: 'm' | 'f') => Promise<{ value: string; }>
 ### logError(...)
 
 ```typescript
-logError(errorId?: string | undefined, errorMessage?: string | undefined, error?: string | undefined) => Promise<{ value: string; }>
+logError(opts: { errorId?: string; errorMessage?: string; error?: string; }) => Promise<{ value: string; }>
 ```
 
-| Param              | Type                |
-| ------------------ | ------------------- |
-| **`errorId`**      | <code>string</code> |
-| **`errorMessage`** | <code>string</code> |
-| **`error`**        | <code>string</code> |
+| Param      | Type                                                                      |
+| ---------- | ------------------------------------------------------------------------- |
+| **`opts`** | <code>{ errorId?: string; errorMessage?: string; error?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
