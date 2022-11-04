@@ -174,8 +174,26 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
         call.resolve()
     }
 
-    @objc func logGroupJoined(_ call: CAPPluginCall){}
-    @objc func logGroupLeft(_ call: CAPPluginCall){}
+    @objc func logGroupJoined(_ call: CAPPluginCall){
+        let groupName = call.getString("groupName")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: groupName, param: FlurryParamBuilder.groupName())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_GROUP_JOINED, param: param)
+        
+        call.resolve()
+    }
+    @objc func logGroupLeft(_ call: CAPPluginCall){
+        let groupName = call.getString("groupName")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: groupName, param: FlurryParamBuilder.groupName())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_GROUP_LEFT, param: param)
+        
+        call.resolve()
+    }
     
     @objc func logLogin(_ call: CAPPluginCall){}
     @objc func logLogout(_ call: CAPPluginCall){}
