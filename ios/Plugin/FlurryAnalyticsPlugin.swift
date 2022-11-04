@@ -31,8 +31,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
                 logLevel = FlurryLogLevelCriticalOnly
             case "error":
                 logLevel = FlurryLogLevelCriticalOnly
-            default:
-                // none, level is initialized as Critical Only
         }
         
         let crashReportingEnabled = call.getBool("crashReportingEnabled", true)
@@ -77,9 +75,53 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
         call.resolve()
     }
     
-    @objc func logContentViewed(_ call: CAPPluginCall){}
-    @objc func logContentSaved(_ call: CAPPluginCall){}
-    @objc func logProductCustomized(_ call: CAPPluginCall){}
+    @objc func logContentViewed(_ call: CAPPluginCall){
+        // required
+        guard let contentId = call.getString("contentId") as? String else {
+            call.reject("Must provide a content ID")
+            return
+        }
+
+        // recommended
+        let contentName = call.getString("contentName", "")
+        let contentType = call.getString("contentType", "")
+        
+        let param = FlurryParamBuilder()
+            .set(stringVal: contentId, param: FlurryParamBuilder.contentId())
+            .set(stringVal: contentName, param: FlurryParamBuilder.contentName())
+            .set(stringVal: contentType, param: FlurryParamBuilder.contentType())
+        
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_CONTENT_VIEWED, param: param)
+        
+        call.resolve()
+    }
+
+    @objc func logContentSaved(_ call: CAPPluginCall){
+        // required
+        guard let contentId = call.getString("contentId") as? String else {
+            call.reject("Must provide a content ID")
+            return
+        }
+
+        // recommended
+        let contentName = call.getString("contentName", "")
+        let contentType = call.getString("contentType", "")
+        
+        let param = FlurryParamBuilder()
+            .set(stringVal: contentId, param: FlurryParamBuilder.contentId())
+            .set(stringVal: contentName, param: FlurryParamBuilder.contentName())
+            .set(stringVal: contentType, param: FlurryParamBuilder.contentType())
+        
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_CONTENT_SAVED, param: param)
+        
+        call.resolve()
+    }
+
+    @objc func logProductCustomized(_ call: CAPPluginCall){
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_PRODUCT_CUSTOMIZED)
+        
+        call.resolve()
+    }
     
     @objc func logSubscriptionStarted(_ call: CAPPluginCall){}
     @objc func logSubscriptionEnded(_ call: CAPPluginCall){}
@@ -107,7 +149,7 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
     
     // Custom Events: https://developer.yahoo.com/flurry/docs/analytics/gettingstarted/events/ios/
     @objc func logCustomEvent(_ call: CAPPluginCall) {
-        let eventName = call.getString("eventName") as? String else {
+        guard let eventName = call.getString("eventName") as? String else {
             call.reject("Must provide an event name")
             return
         }
