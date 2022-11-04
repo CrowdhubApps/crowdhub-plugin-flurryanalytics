@@ -195,23 +195,217 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
         call.resolve()
     }
     
-    @objc func logLogin(_ call: CAPPluginCall){}
-    @objc func logLogout(_ call: CAPPluginCall){}
-    @objc func logUserRegistered(_ call: CAPPluginCall){}
+    @objc func logLogin(_ call: CAPPluginCall){
+        let userId = call.getString("userId")
+        let method = call.getString("method")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: userId, param: FlurryParamBuilder.userId())
+            .set(stringVal: method, param: FlurryParamBuilder.method())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_LOGIN, param: param)
+        
+        call.resolve()
+    }
+    @objc func logLogout(_ call: CAPPluginCall){
+        let userId = call.getString("userId")
+        let method = call.getString("method")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: userId, param: FlurryParamBuilder.userId())
+            .set(stringVal: method, param: FlurryParamBuilder.method())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_LOGOUT, param: param)
+        
+        call.resolve()
+    }
+    @objc func logUserRegistered(_ call: CAPPluginCall){
+        let userId = call.getString("userId")
+        let method = call.getString("method")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: userId, param: FlurryParamBuilder.userId())
+            .set(stringVal: method, param: FlurryParamBuilder.method())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_USER_REGISTERED, param: param)
+        
+        call.resolve()
+    }
     
-    @objc func logSearchResultViewed(_ call: CAPPluginCall){}
-    @objc func logKeywordSearched(_ call: CAPPluginCall){}
-    @objc func logLocationSearched(_ call: CAPPluginCall){}
+    @objc func logSearchResultViewed(_ call: CAPPluginCall){
+        let query = call.getString("query")
+        let searchType = call.getString("searchType")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: query, param: FlurryParamBuilder.query())
+            .set(stringVal: searchType, param: FlurryParamBuilder.searchType())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_SEARCH_RESULT_VIEWED, param: param)
+        
+        call.resolve()
+    }
+
+    @objc func logKeywordSearched(_ call: CAPPluginCall){
+        let query = call.getString("query")
+        let searchType = call.getString("searchType")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: query, param: FlurryParamBuilder.query())
+            .set(stringVal: searchType, param: FlurryParamBuilder.searchType())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_KEYWORD_SEARCHED, param: param)
+        
+        call.resolve()
+    }
+
+    @objc func logLocationSearched(_ call: CAPPluginCall){
+        let query = call.getString("query")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: query, param: FlurryParamBuilder.query())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_LOCATION_SEARCHED, param: param)
+        
+        call.resolve()
+    }
     
-    @objc func logInvite(_ call: CAPPluginCall){}
-    @objc func logShare(_ call: CAPPluginCall){}
-    @objc func logLike(_ call: CAPPluginCall){}
-    @objc func logComment(_ call: CAPPluginCall){}
+    @objc func logInvite(_ call: CAPPluginCall){
+        let userId = call.getString("userId")
+        let method = call.getString("method")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: userId, param: FlurryParamBuilder.userId())
+            .set(stringVal: method, param: FlurryParamBuilder.method())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_INVITE, param: param)
+        
+        call.resolve()
+    }
+
+    @objc func logShare(_ call: CAPPluginCall){
+        guard let socialContentId = call.getString("socialContentId") as? String else {
+            call.reject("Must provide a social content ID")
+            return
+        }
+
+        let socialContentName = call.getString("socialContentName")
+        let method = call.getString("method")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: socialContentId, param: FlurryParamBuilder.socialContentId())
+            .set(stringVal: socialContentName, param: FlurryParamBuilder.socialContentName())
+            .set(stringVal: method, param: FlurryParamBuilder.method())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_SHARE, param: param)
+        
+        call.resolve()
+    }
+    @objc func logLike(_ call: CAPPluginCall){
+        guard let socialContentId = call.getString("socialContentId") as? String else {
+            call.reject("Must provide a social content ID")
+            return
+        }
+
+        let socialContentName = call.getString("socialContentName")
+        let likeType = call.getString("likeType")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: socialContentId, param: FlurryParamBuilder.socialContentId())
+            .set(stringVal: socialContentName, param: FlurryParamBuilder.socialContentName())
+            .set(stringVal: likeType, param: FlurryParamBuilder.likeType())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_LIKE, param: param)
+        
+        call.resolve()
+    }
+    @objc func logComment(_ call: CAPPluginCall){
+        guard let socialContentId = call.getString("socialContentId") as? String else {
+            call.reject("Must provide a social content ID")
+            return
+        }
+
+        let socialContentName = call.getString("socialContentName")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: socialContentId, param: FlurryParamBuilder.socialContentId())
+            .set(stringVal: socialContentName, param: FlurryParamBuilder.socialContentName())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_COMMENT, param: param)
+        
+        call.resolve()
+    }
     
-    @objc func logMediaCaptured(_ call: CAPPluginCall){}
-    @objc func logMediaStarted(_ call: CAPPluginCall){}
-    @objc func logMediaStopped(_ call: CAPPluginCall){}
-    @objc func logMediaPaused(_ call: CAPPluginCall){}
+    @objc func logMediaCaptured(_ call: CAPPluginCall){
+        let mediaId = call.getString("mediaId")
+        let mediaName = call.getString("mediaName")
+        let mediaType = call.getString("mediaType")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: mediaId, param: FlurryParamBuilder.mediaId())
+            .set(stringVal: mediaName, param: FlurryParamBuilder.mediaName())
+            .set(stringVal: mediaType, param: FlurryParamBuilder.mediaType())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_MEDIA_CAPTURED, param: param)
+        
+        call.resolve()
+    }
+
+    @objc func logMediaStarted(_ call: CAPPluginCall){
+        let mediaId = call.getString("mediaId")
+        let mediaName = call.getString("mediaName")
+        let mediaType = call.getString("mediaType")
+
+        let param = FlurryParamBuilder()
+            .set(stringVal: mediaId, param: FlurryParamBuilder.mediaId())
+            .set(stringVal: mediaName, param: FlurryParamBuilder.mediaName())
+            .set(stringVal: mediaType, param: FlurryParamBuilder.mediaType())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_MEDIA_STARTED, param: param)
+        
+        call.resolve()
+    }
+
+    @objc func logMediaStopped(_ call: CAPPluginCall){
+        guard let duration = call.getInt("duration") as? Int else {
+            call.reject("Must provide a duration")
+            return
+        }
+
+        let mediaId = call.getString("mediaId")
+        let mediaName = call.getString("mediaName")
+        let mediaType = call.getString("mediaType")
+
+        let param = FlurryParamBuilder()
+            .set(intVal: duration, param: FlurryParamBuilder.duration())
+            .set(stringVal: mediaId, param: FlurryParamBuilder.mediaId())
+            .set(stringVal: mediaName, param: FlurryParamBuilder.mediaName())
+            .set(stringVal: mediaType, param: FlurryParamBuilder.mediaType())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_MEDIA_STOPPED, param: param)
+        
+        call.resolve()
+    }
+    
+    @objc func logMediaPaused(_ call: CAPPluginCall){
+        guard let duration = call.getInt("duration") as? Int else {
+            call.reject("Must provide a duration")
+            return
+        }
+
+        let mediaId = call.getString("mediaId")
+        let mediaName = call.getString("mediaName")
+        let mediaType = call.getString("mediaType")
+
+        let param = FlurryParamBuilder()
+            .set(intVal: duration, param: FlurryParamBuilder.duration())
+            .set(stringVal: mediaId, param: FlurryParamBuilder.mediaId())
+            .set(stringVal: mediaName, param: FlurryParamBuilder.mediaName())
+            .set(stringVal: mediaType, param: FlurryParamBuilder.mediaType())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_MEDIA_PAUSED, param: param)
+        
+        call.resolve()
+    }
     
     
     // Custom Events: https://developer.yahoo.com/flurry/docs/analytics/gettingstarted/events/ios/
