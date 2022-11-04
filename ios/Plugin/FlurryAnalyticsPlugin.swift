@@ -46,8 +46,7 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
         Flurry.startSession(apiKey: apiKey, sessionBuilder: sb)
         call.resolve()
     }
-    
-    
+
     
     // StandardEvents: https://developer.yahoo.com/flurry/docs/analytics/standard_events/iOS/
     @objc func logContentRated(_ call: CAPPluginCall){
@@ -385,7 +384,7 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
         
         call.resolve()
     }
-    
+
     @objc func logMediaPaused(_ call: CAPPluginCall){
         guard let duration = call.getInt("duration") as? Int else {
             call.reject("Must provide a duration")
@@ -450,9 +449,9 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
     }
 
     @objc func logError(_ call: CAPPluginCall) {
-        let errorId = call.getString("errorId", "")
+        let errorId = call.getString("errorId")
         let errorMessage = call.getString("errorMessage", "An error occurred")
-        let error = call.getString("error", "")
+        let error = call.getString("error")
         Flurry.log(errorId: errorId, message: errorMessage, error: error)
         call.resolve()
     }
