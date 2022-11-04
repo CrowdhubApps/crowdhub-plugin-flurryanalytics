@@ -10,69 +10,147 @@ import Flurry_iOS_SDK
 public class FlurryAnalyticsPlugin: CAPPlugin {
     private let implementation = FlurryAnalytics()
 
+    // Initialize: https://developer.yahoo.com/flurry/docs/integrateflurry/ios/#swift
     @objc func initialize(_ call: CAPPluginCall) {
-        // TODO:
-        let logLevel = call.getString("logLevel", "DEBUG")
+        
+        guard let apiKey = call.getString("apiKey") as? String else {
+            call.reject("Must provide a Flurry API Key")
+            return
+        }
+        
+        let logLevel = FlurryLogLevelCriticalOnly
+        
+        switch call.getString("logLevel")?.lowercased() {
+            case "verbose":
+                logLevel = FlurryLogLevelAll
+            case "debug":
+                logLevel = FlurryLogLevelDebug
+            case "info":
+                logLevel = FlurryLogLevelDebug
+            case "warn":
+                logLevel = FlurryLogLevelCriticalOnly
+            case "error":
+                logLevel = FlurryLogLevelCriticalOnly
+            default:
+                // none, level is initialized as Critical Only
+        }
+        
         let crashReportingEnabled = call.getBool("crashReportingEnabled", true)
         let appVersion = call.getString("appVersion", "1.0")
         let iapReportingEnabled = call.getBool("iapReportingEnabled", true)
-        let apiKey = call.getString("apiKey")
-        
+
         let sb = FlurrySessionBuilder()
-                  .build(logLevel: FlurryLogLevel.all)
-                  .build(crashReportingEnabled: crashReportingEnabled)
-                  .build(appVersion: appVersion)
-                  .build(iapReportingEnabled: iapReportingEnabled)
-              
-            Flurry.startSession(apiKey: apiKey, sessionBuilder: sb)
+            .build(logLevel: logLevel)
+            .build(crashReportingEnabled: crashReportingEnabled)
+            .build(appVersion: appVersion)
+            .build(iapReportingEnabled: iapReportingEnabled)
+        
+        Flurry.startSession(apiKey: apiKey, sessionBuilder: sb)
+        call.resolve()
     }
     
     
     
-    //StandardEvents: https://developer.yahoo.com/flurry/docs/analytics/standard_events/iOS/
+    // StandardEvents: https://developer.yahoo.com/flurry/docs/analytics/standard_events/iOS/
+    @objc func logContentRated(_ call: CAPPluginCall){
+        // required
+        guard let contentId = call.getString("contentId") as? String else {
+            call.reject("Must provide a content ID")
+            return
+        }
+        guard let contentRating = call.getString("contentRating") as? String else {
+            call.reject("Must provide a content rating")
+            return
+        }
+        // recommended
+        let contentName = call.getString("contentName", "")
+        let contentType = call.getString("contentType", "")
+        
+        let param = FlurryParamBuilder()
+            .set(stringVal: contentId, param: FlurryParamBuilder.contentId())
+            .set(stringVal: contentRating, param: FlurryParamBuilder.rating())
+            .set(stringVal: contentName, param: FlurryParamBuilder.contentName())
+            .set(stringVal: contentType, param: FlurryParamBuilder.contentType())
+        
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_CONTENT_RATED, param: param)
+        
+        call.resolve()
+    }
     
+    @objc func logContentViewed(_ call: CAPPluginCall){}
+    @objc func logContentSaved(_ call: CAPPluginCall){}
+    @objc func logProductCustomized(_ call: CAPPluginCall){}
     
+    @objc func logSubscriptionStarted(_ call: CAPPluginCall){}
+    @objc func logSubscriptionEnded(_ call: CAPPluginCall){}
+    @objc func logGroupJoined(_ call: CAPPluginCall){}
+    @objc func logGroupLeft(_ call: CAPPluginCall){}
+    
+    @objc func logLogin(_ call: CAPPluginCall){}
+    @objc func logLogout(_ call: CAPPluginCall){}
+    @objc func logUserRegistered(_ call: CAPPluginCall){}
+    
+    @objc func logSearchResultViewed(_ call: CAPPluginCall){}
+    @objc func logKeywordSearched(_ call: CAPPluginCall){}
+    @objc func logLocationSearched(_ call: CAPPluginCall){}
+    
+    @objc func logInvite(_ call: CAPPluginCall){}
+    @objc func logShare(_ call: CAPPluginCall){}
+    @objc func logLike(_ call: CAPPluginCall){}
+    @objc func logComment(_ call: CAPPluginCall){}
+    
+    @objc func logMediaCaptured(_ call: CAPPluginCall){}
+    @objc func logMediaStarted(_ call: CAPPluginCall){}
+    @objc func logMediaStopped(_ call: CAPPluginCall){}
+    @objc func logMediaPaused(_ call: CAPPluginCall){}
     
     
     // Custom Events: https://developer.yahoo.com/flurry/docs/analytics/gettingstarted/events/ios/
     @objc func logCustomEvent(_ call: CAPPluginCall) {
-        let eventName = call.getString("eventName","")
+        let eventName = call.getString("eventName") as? String else {
+            call.reject("Must provide an event name")
+            return
+        }
         let eventParams = call.getObject("eventParams", [:])
         let eventTimed = call.getBool("eventTimed",false)
-        call.resolve([
-            "eventName": Flurry.log(eventName: eventName, parameters: eventParams, timed: eventTimed)
-        ])
+        Flurry.log(eventName: eventName, parameters: eventParams, timed: eventTimed)
+        call.resolve()
     }
     
     
     // Advanced Features: https://developer.yahoo.com/flurry/docs/analytics/gettingstarted/technicalquickstart/ios/
     @objc func setUserId(_ call: CAPPluginCall) {
-        let userId = call.getString("userId","")
-        call.resolve([
-            "userId": Flurry.set(userId: userId)
-        ])
+        guard let userId = call.getString("userId") as? String else {
+            call.reject("Must provide a user ID")
+            return
+        }
+        Flurry.set(userId: userId)
+        call.resolve()
     }
 
     @objc func setAge(_ call: CAPPluginCall) {
-        let userAge = call.getInt("userAge",0)
-        call.resolve([
-            "userAge": Flurry.set(age: userAge)
-        ])
+        guard let userAge = call.getInt("userAge") as? Int > 0 else {
+            call.reject("Must provide a user age")
+            return
+        }
+        Flurry.set(age: userAge)
+        call.resolve()
     }
 
     @objc func setGender(_ call: CAPPluginCall) {
-        let userGender = call.getString("userGender", "")
-        call.resolve([
-            "userGender": Flurry.set(gender: userGender)
-        ])
+        guard let userGender = call.getString("userGender") as? String else {
+            call.reject("Must provide a user gender")
+            return
+        }
+        Flurry.set(gender: userGender)
+        call.resolve()
     }
 
     @objc func logError(_ call: CAPPluginCall) {
         let errorId = call.getString("errorId", "")
-        let errorMessage = call.getString("errorMessage", "")
+        let errorMessage = call.getString("errorMessage", "An error occurred")
         let error = call.getString("error", "")
-        call.resolve([
-            "error": Flurry.log(errorId: errorId, message: errorMessage, error: error)
-        ])
+        Flurry.log(errorId: errorId, message: errorMessage, error: error)
+        call.resolve()
     }
 }
