@@ -123,8 +123,57 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
         call.resolve()
     }
     
-    @objc func logSubscriptionStarted(_ call: CAPPluginCall){}
-    @objc func logSubscriptionEnded(_ call: CAPPluginCall){}
+    @objc func logSubscriptionStarted(_ call: CAPPluginCall){
+        // required
+        guard let price = call.getDouble("price") as? Double else {
+            call.reject("Must provide a price")
+            return
+        }
+        guard let isAnnualSubscription = call.getBool("isAnnualSubscription") as? Bool else {
+            call.reject("Must define whether the subscription is annual or not")
+            return
+        }
+
+        // recommended
+        let trialDays = call.getInt("trialDays")
+        let predictedLTV = call.getString("predictedLTV")
+        let currencyType = call.getString("currencyType")
+        let subscriptionCountry = call.getString("subscriptionCountry")
+        
+        let param = FlurryParamBuilder()
+            .set(doubleVal: price, param: FlurryParamBuilder.price())
+            .set(boolVal: isAnnualSubscription, param: FlurryParamBuilder.isAnnualSubscription())
+            .set(intVal: trialDays, param: FlurryParamBuilder.trialDays())
+            .set(stringVal: predictedLTV, param: FlurryParamBuilder.predictedLTV())
+            .set(stringVal: currencyType, param: FlurryParamBuilder.currencyType())
+            .set(stringVal: subscriptionCountry, param: FlurryParamBuilder.subscriptionCountry())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_SUBSCRIPTION_STARTED, param: param)
+        
+        call.resolve()
+    }
+
+    @objc func logSubscriptionEnded(_ call: CAPPluginCall){
+        // required
+        guard let isAnnualSubscription = call.getBool("isAnnualSubscription") as? Bool else {
+            call.reject("Must define whether the subscription is annual or not")
+            return
+        }
+
+        // recommended
+        let currencyType = call.getString("currencyType")
+        let subscriptionCountry = call.getString("subscriptionCountry")
+        
+        let param = FlurryParamBuilder()
+            .set(boolVal: isAnnualSubscription, param: FlurryParamBuilder.isAnnualSubscription())
+            .set(stringVal: currencyType, param: FlurryParamBuilder.currencyType())
+            .set(stringVal: subscriptionCountry, param: FlurryParamBuilder.subscriptionCountry())
+
+        Flurry.log(standardEvent: FlurryEvent.FLURRY_EVENT_SUBSCRIPTION_ENDED, param: param)
+        
+        call.resolve()
+    }
+
     @objc func logGroupJoined(_ call: CAPPluginCall){}
     @objc func logGroupLeft(_ call: CAPPluginCall){}
     
