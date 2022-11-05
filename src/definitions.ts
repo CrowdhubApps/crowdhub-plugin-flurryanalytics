@@ -30,7 +30,7 @@ export interface FlurryAnalyticsPlugin {
 
   logSubscriptionStarted(opts: {
     price: number;
-    isAnnualSubscribtion: boolean;
+    isAnnualSubscription: boolean;
     trialDays?: number;
     predictedLTV?: string;
     currencyType?: string;
@@ -38,7 +38,7 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   logSubscriptionEnded(opts: {
-    isAnnualSubscribtion: boolean;
+    isAnnualSubscription: boolean;
     currencyType?: string;
     subscriptionCountry?: string;
   }): Promise<{ value: string }>;
@@ -124,13 +124,14 @@ export interface FlurryAnalyticsPlugin {
 
   logCustomEvent(opts: {
     eventName: string;
-    eventParams?: [Record<string, unknown>];
+    eventParams?: { [key: string]: any };
     eventTimed?: boolean;
   }): Promise<{ value: string }>;
 
   setUserId(opts: { userId: string }): Promise<{ value: string }>;
   setAge(opts: { userAge: number }): Promise<{ value: string }>;
   setGender(opts: { userGender: 'm' | 'f' }): Promise<{ value: string }>;
+
   logError(opts: {
     errorId?: string;
     errorMessage?: string;

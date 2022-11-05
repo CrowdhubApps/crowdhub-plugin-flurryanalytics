@@ -123,8 +123,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
         let param = FlurryParamBuilder()
             .set(stringVal: "Product customized", param: FlurryStringParam())
         Flurry.log(standardEvent: FlurryEvent.productCustomized, param: param)
-
-        call.resolve()
     }
 
     @objc func logSubscriptionStarted(_ call: CAPPluginCall) {
@@ -185,9 +183,8 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .set(stringVal: groupName, param: FlurryParamBuilder.groupName())
 
         Flurry.log(standardEvent: FlurryEvent.groupJoined, param: param)
-
-        call.resolve()
     }
+
     @objc func logGroupLeft(_ call: CAPPluginCall) {
         let groupName = call.getString("groupName")!
 
@@ -195,8 +192,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .set(stringVal: groupName, param: FlurryParamBuilder.groupName())
 
         Flurry.log(standardEvent: FlurryEvent.groupLeft, param: param)
-
-        call.resolve()
     }
 
     @objc func logLogin(_ call: CAPPluginCall) {
@@ -208,8 +203,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .set(stringVal: method, param: FlurryParamBuilder.method())
 
         Flurry.log(standardEvent: FlurryEvent.login, param: param)
-
-        call.resolve()
     }
     @objc func logLogout(_ call: CAPPluginCall) {
         let userId = call.getString("userId")!
@@ -220,8 +213,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .set(stringVal: method, param: FlurryParamBuilder.method())
 
         Flurry.log(standardEvent: FlurryEvent.logout, param: param)
-
-        call.resolve()
     }
     @objc func logUserRegistered(_ call: CAPPluginCall) {
         let userId = call.getString("userId")!
@@ -232,8 +223,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .set(stringVal: method, param: FlurryParamBuilder.method())
 
         Flurry.log(standardEvent: FlurryEvent.userRegistered, param: param)
-
-        call.resolve()
     }
 
     @objc func logSearchResultViewed(_ call: CAPPluginCall) {
@@ -245,8 +234,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .set(stringVal: searchType, param: FlurryParamBuilder.searchType())
 
         Flurry.log(standardEvent: FlurryEvent.searchResultViewed, param: param)
-
-        call.resolve()
     }
 
     @objc func logKeywordSearched(_ call: CAPPluginCall) {
@@ -258,8 +245,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .set(stringVal: searchType, param: FlurryParamBuilder.searchType())
 
         Flurry.log(standardEvent: FlurryEvent.keywordSearched, param: param)
-
-        call.resolve()
     }
 
     @objc func logLocationSearched(_ call: CAPPluginCall) {
@@ -269,8 +254,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .set(stringVal: query, param: FlurryParamBuilder.query())
 
         Flurry.log(standardEvent: FlurryEvent.locationSearched, param: param)
-
-        call.resolve()
     }
 
     @objc func logInvite(_ call: CAPPluginCall) {
@@ -282,8 +265,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .set(stringVal: method, param: FlurryParamBuilder.method())
 
         Flurry.log(standardEvent: FlurryEvent.invite, param: param)
-
-        call.resolve()
     }
 
     @objc func logShare(_ call: CAPPluginCall) {
@@ -350,8 +331,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .set(stringVal: mediaType, param: FlurryParamBuilder.mediaType())
 
         Flurry.log(standardEvent: FlurryEvent.mediaCaptured, param: param)
-
-        call.resolve()
     }
 
     @objc func logMediaStarted(_ call: CAPPluginCall) {
@@ -365,8 +344,6 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .set(stringVal: mediaType, param: FlurryParamBuilder.mediaType())
 
         Flurry.log(standardEvent: FlurryEvent.mediaStarted, param: param)
-
-        call.resolve()
     }
 
     @objc func logMediaStopped(_ call: CAPPluginCall) {
@@ -455,6 +432,5 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
         let errorId = call.getString("errorId")!
         let errorMessage = call.getString("errorMessage", "An error occurred")
         Flurry.log(errorId: errorId, message: errorMessage, error: "Oh no!" as? any Error)
-        call.resolve()
     }
 }

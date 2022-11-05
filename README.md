@@ -41,7 +41,6 @@ npx cap sync
 * [`setAge(...)`](#setage)
 * [`setGender(...)`](#setgender)
 * [`logError(...)`](#logerror)
-* [Type Aliases](#type-aliases)
 
 </docgen-index>
 
@@ -122,12 +121,12 @@ logProductCustomized() => Promise<{ value: string; }>
 ### logSubscriptionStarted(...)
 
 ```typescript
-logSubscriptionStarted(opts: { price: number; isAnnualSubscribtion: boolean; trialDays?: number; predictedLTV?: string; currencyType?: string; subscriptionCountry?: string; }) => Promise<{ value: string; }>
+logSubscriptionStarted(opts: { price: number; isAnnualSubscription: boolean; trialDays?: number; predictedLTV?: string; currencyType?: string; subscriptionCountry?: string; }) => Promise<{ value: string; }>
 ```
 
 | Param      | Type                                                                                                                                                           |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`opts`** | <code>{ price: number; isAnnualSubscribtion: boolean; trialDays?: number; predictedLTV?: string; currencyType?: string; subscriptionCountry?: string; }</code> |
+| **`opts`** | <code>{ price: number; isAnnualSubscription: boolean; trialDays?: number; predictedLTV?: string; currencyType?: string; subscriptionCountry?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -137,12 +136,12 @@ logSubscriptionStarted(opts: { price: number; isAnnualSubscribtion: boolean; tri
 ### logSubscriptionEnded(...)
 
 ```typescript
-logSubscriptionEnded(opts: { isAnnualSubscribtion: boolean; currencyType?: string; subscriptionCountry?: string; }) => Promise<{ value: string; }>
+logSubscriptionEnded(opts: { isAnnualSubscription: boolean; currencyType?: string; subscriptionCountry?: string; }) => Promise<{ value: string; }>
 ```
 
 | Param      | Type                                                                                                 |
 | ---------- | ---------------------------------------------------------------------------------------------------- |
-| **`opts`** | <code>{ isAnnualSubscribtion: boolean; currencyType?: string; subscriptionCountry?: string; }</code> |
+| **`opts`** | <code>{ isAnnualSubscription: boolean; currencyType?: string; subscriptionCountry?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -392,12 +391,12 @@ logMediaPaused(opts: { duration: number; mediaId?: string; mediaName?: string; m
 ### logCustomEvent(...)
 
 ```typescript
-logCustomEvent(opts: { eventName: string; eventParams?: [Record<string, unknown>]; eventTimed?: boolean; }) => Promise<{ value: string; }>
+logCustomEvent(opts: { eventName: string; eventParams?: { [key: string]: any; } | undefined; eventTimed?: boolean | undefined; }) => Promise<{ value: string; }>
 ```
 
-| Param      | Type                                                                                                     |
-| ---------- | -------------------------------------------------------------------------------------------------------- |
-| **`opts`** | <code>{ eventName: string; eventParams?: [Record&lt;string, unknown&gt;]; eventTimed?: boolean; }</code> |
+| Param      | Type                                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------ |
+| **`opts`** | <code>{ eventName: string; eventParams?: { [key: string]: any; }; eventTimed?: boolean; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -462,15 +461,5 @@ logError(opts: { errorId?: string; errorMessage?: string; error?: string; }) => 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
 --------------------
-
-
-### Type Aliases
-
-
-#### Record
-
-Construct a type with a set of properties K of type T
-
-<code>{ [P in K]: T; }</code>
 
 </docgen-api>
