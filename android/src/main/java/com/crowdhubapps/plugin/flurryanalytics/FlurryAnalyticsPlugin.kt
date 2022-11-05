@@ -217,9 +217,12 @@ class FlurryAnalyticsPlugin : Plugin() {
     // Custom Events: https://developer.yahoo.com/flurry/docs/analytics/gettingstarted/events/ios/
     @PluginMethod
     fun logCustomEvent(call: PluginCall) {
-        val params = FlurryEvent.Params()
+        val eventName: String = "Custom event"
+        val isTimed: Boolean = false
+        var customParams: HashMap<String, String>
+        customParams["customParamName"] = "customParamValue"
 
-        FlurryAgent.logEvent('', params)
+        FlurryAgent.logEvent(eventName, customParams, isTimed)
     }
 
     // Advanced Features: https://developer.yahoo.com/flurry/docs/analytics/gettingstarted/technicalquickstart/ios/
