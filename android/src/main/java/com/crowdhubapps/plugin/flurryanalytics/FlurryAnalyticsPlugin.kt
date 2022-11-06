@@ -8,15 +8,14 @@ import com.flurry.android.FlurryAgent
 import com.flurry.android.FlurryEvent
 import com.flurry.android.FlurryPerformance
 import com.getcapacitor.*
-import org.json.JSONObject
 
 @CapacitorPlugin(name = "FlurryAnalytics")
 class FlurryAnalyticsPlugin : Plugin() {
     private val implementation = FlurryAnalytics()
     @PluginMethod
     fun initialize(call: PluginCall) {
-        var logLevel: Int
-        var logEnabled: Boolean
+        val logLevel: Int
+        val logEnabled: Boolean
         when (call.getString("logLevel")?.lowercase()) {
             "verbose" -> {
                 logLevel = Log.VERBOSE
@@ -60,7 +59,7 @@ class FlurryAnalyticsPlugin : Plugin() {
     // StandardEvents: https://developer.yahoo.com/flurry/docs/analytics/standard_events/iOS/
     @PluginMethod
     fun logContentRated(call: PluginCall) {
-        var params = FlurryEvent.Params()
+        val params = FlurryEvent.Params()
 
         call.getString("contentId")?.let {
             params.putString(FlurryEvent.Param.CONTENT_ID, it)
@@ -127,6 +126,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         val params = FlurryEvent.Params()
 
         FlurryAgent.logEvent(FlurryEvent.PRODUCT_CUSTOMIZED, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -186,6 +186,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(FlurryEvent.GROUP_JOINED, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -197,6 +198,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(FlurryEvent.GROUP_LEFT, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -212,6 +214,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(FlurryEvent.LOGIN, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -226,6 +229,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(FlurryEvent.LOGOUT, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -240,6 +244,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(FlurryEvent.USER_REGISTERED, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -254,6 +259,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(FlurryEvent.SEARCH_RESULT_VIEWED, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -268,6 +274,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(FlurryEvent.KEYWORD_SEARCHED, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -279,6 +286,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(FlurryEvent.LOCATION_SEARCHED, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -293,6 +301,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(FlurryEvent.INVITE, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -364,6 +373,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(FlurryEvent.MEDIA_CAPTURED, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -381,6 +391,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(FlurryEvent.MEDIA_STARTED, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -431,7 +442,7 @@ class FlurryAnalyticsPlugin : Plugin() {
     @PluginMethod
     fun logCustomEvent(call: PluginCall) {
 
-        var eventName: String = ""
+        var eventName = ""
         call.getString("eventName")?.let {
             eventName = it
         } ?: run {
@@ -452,6 +463,7 @@ class FlurryAnalyticsPlugin : Plugin() {
         }
 
         FlurryAgent.logEvent(eventName, eventMap, isTimed)
+        call.resolve()
     }
 
     // Advanced Features: https://developer.yahoo.com/flurry/docs/analytics/gettingstarted/technicalquickstart/ios/
@@ -459,6 +471,7 @@ class FlurryAnalyticsPlugin : Plugin() {
     fun setUserId(call: PluginCall) {
         call.getString("userId")?.let {
             FlurryAgent.setUserId(it)
+            call.resolve()
         } ?: call.reject("Must provide a user ID")
     }
 
@@ -493,5 +506,6 @@ class FlurryAnalyticsPlugin : Plugin() {
     @PluginMethod
     fun logError(call: PluginCall) {
         FlurryAgent.onError("","An error has occurred","")
+        call.resolve()
     }
 }
