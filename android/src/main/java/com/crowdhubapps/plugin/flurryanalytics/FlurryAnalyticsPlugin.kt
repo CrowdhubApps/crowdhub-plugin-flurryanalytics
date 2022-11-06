@@ -4,13 +4,11 @@ import android.util.Log
 import com.getcapacitor.annotation.CapacitorPlugin
 import com.crowdhubapps.plugin.flurryanalytics.FlurryAnalytics
 import com.flurry.android.Constants
-import com.getcapacitor.JSObject
 import com.flurry.android.FlurryAgent
 import com.flurry.android.FlurryEvent
 import com.flurry.android.FlurryPerformance
-import com.getcapacitor.Plugin
-import com.getcapacitor.PluginMethod
-import com.getcapacitor.PluginCall
+import com.getcapacitor.*
+import org.json.JSONObject
 
 @CapacitorPlugin(name = "FlurryAnalytics")
 class FlurryAnalyticsPlugin : Plugin() {
@@ -62,23 +60,66 @@ class FlurryAnalyticsPlugin : Plugin() {
     // StandardEvents: https://developer.yahoo.com/flurry/docs/analytics/standard_events/iOS/
     @PluginMethod
     fun logContentRated(call: PluginCall) {
-        val params = FlurryEvent.Params()
+        var params = FlurryEvent.Params()
+
+        call.getString("contentId")?.let {
+            params.putString(FlurryEvent.Param.CONTENT_ID, it)
+        } ?: call.reject("Must provide a content ID")
+
+        call.getString("contentRating")?.let {
+            params.putString(FlurryEvent.Param.RATING, it)
+        } ?: call.reject("Must provide a content rating")
+
+        call.getString("contentName")?.let {
+            params.putString(FlurryEvent.Param.CONTENT_NAME, it)
+        }
+
+        call.getString("contentType")?.let {
+            params.putString(FlurryEvent.Param.CONTENT_TYPE, it)
+        }
 
         FlurryAgent.logEvent(FlurryEvent.CONTENT_RATED, params)
+        call.resolve()
     }
 
     @PluginMethod
     fun logContentViewed(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getString("contentId")?.let {
+            params.putString(FlurryEvent.Param.CONTENT_ID, it)
+        } ?: call.reject("Must provide a content ID")
+
+        call.getString("contentName")?.let {
+            params.putString(FlurryEvent.Param.CONTENT_NAME, it)
+        }
+
+        call.getString("contentType")?.let {
+            params.putString(FlurryEvent.Param.CONTENT_TYPE, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.CONTENT_VIEWED, params)
+        call.resolve()
     }
 
     @PluginMethod
     fun logContentSaved(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getString("contentId")?.let {
+            params.putString(FlurryEvent.Param.CONTENT_ID, it)
+        } ?: call.reject("Must provide a content ID")
+
+        call.getString("contentName")?.let {
+            params.putString(FlurryEvent.Param.CONTENT_NAME, it)
+        }
+
+        call.getString("contentType")?.let {
+            params.putString(FlurryEvent.Param.CONTENT_TYPE, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.CONTENT_SAVED, params)
+        call.resolve()
     }
 
     @PluginMethod
@@ -92,19 +133,57 @@ class FlurryAnalyticsPlugin : Plugin() {
     fun logSubscriptionStarted(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getDouble("price")?.let {
+            params.putDouble(FlurryEvent.Param.PRICE, it)
+        } ?: call.reject("Must provide a price")
+
+        call.getBoolean("isAnnualSubscription")?.let {
+            params.putBoolean(FlurryEvent.Param.IS_ANNUAL_SUBSCRIPTION, it)
+        } ?: call.reject("Must define whether the subscription is annual or not")
+
+        call.getInt("trialDays")?.let {
+            params.putInteger(FlurryEvent.Param.TRIAL_DAYS, it)
+        }
+        call.getString("predictedLTV")?.let {
+            params.putString(FlurryEvent.Param.PREDICTED_LTV, it)
+        }
+        call.getString("currencyType")?.let {
+            params.putString(FlurryEvent.Param.CURRENCY_TYPE, it)
+        }
+        call.getString("subscriptionCountry")?.let {
+            params.putString(FlurryEvent.Param.SUBSCRIPTION_COUNTRY, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.SUBSCRIPTION_STARTED, params)
+        call.resolve()
     }
 
     @PluginMethod
     fun logSubscriptionEnded(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getBoolean("isAnnualSubscription")?.let {
+            params.putBoolean(FlurryEvent.Param.IS_ANNUAL_SUBSCRIPTION, it)
+        } ?: call.reject("Must define whether the subscription is annual or not")
+
+        call.getString("currencyType")?.let {
+            params.putString(FlurryEvent.Param.CURRENCY_TYPE, it)
+        }
+        call.getString("subscriptionCountry")?.let {
+            params.putString(FlurryEvent.Param.SUBSCRIPTION_COUNTRY, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.SUBSCRIPTION_ENDED, params)
+        call.resolve()
     }
 
     @PluginMethod
     fun logGroupJoined(call: PluginCall) {
         val params = FlurryEvent.Params()
+
+        call.getString("groupName")?.let {
+            params.putString(FlurryEvent.Param.GROUP_NAME, it)
+        }
 
         FlurryAgent.logEvent(FlurryEvent.GROUP_JOINED, params)
     }
@@ -113,12 +192,24 @@ class FlurryAnalyticsPlugin : Plugin() {
     fun logGroupLeft(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getString("groupName")?.let {
+            params.putString(FlurryEvent.Param.GROUP_NAME, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.GROUP_LEFT, params)
     }
 
     @PluginMethod
     fun logLogin(call: PluginCall) {
         val params = FlurryEvent.Params()
+
+
+        call.getString("userId")?.let {
+            params.putString(FlurryEvent.Param.USER_ID, it)
+        }
+        call.getString("method")?.let {
+            params.putString(FlurryEvent.Param.METHOD, it)
+        }
 
         FlurryAgent.logEvent(FlurryEvent.LOGIN, params)
     }
@@ -127,12 +218,26 @@ class FlurryAnalyticsPlugin : Plugin() {
     fun logLogout(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getString("userId")?.let {
+            params.putString(FlurryEvent.Param.USER_ID, it)
+        }
+        call.getString("method")?.let {
+            params.putString(FlurryEvent.Param.METHOD, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.LOGOUT, params)
     }
 
     @PluginMethod
     fun logUserRegistered(call: PluginCall) {
         val params = FlurryEvent.Params()
+
+        call.getString("userId")?.let {
+            params.putString(FlurryEvent.Param.USER_ID, it)
+        }
+        call.getString("method")?.let {
+            params.putString(FlurryEvent.Param.METHOD, it)
+        }
 
         FlurryAgent.logEvent(FlurryEvent.USER_REGISTERED, params)
     }
@@ -141,12 +246,26 @@ class FlurryAnalyticsPlugin : Plugin() {
     fun logSearchResultViewed(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getString("query")?.let {
+            params.putString(FlurryEvent.Param.QUERY, it)
+        }
+        call.getString("searchType")?.let {
+            params.putString(FlurryEvent.Param.SEARCH_TYPE, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.SEARCH_RESULT_VIEWED, params)
     }
 
     @PluginMethod
     fun logKeywordSearched(call: PluginCall) {
         val params = FlurryEvent.Params()
+
+        call.getString("query")?.let {
+            params.putString(FlurryEvent.Param.QUERY, it)
+        }
+        call.getString("searchType")?.let {
+            params.putString(FlurryEvent.Param.SEARCH_TYPE, it)
+        }
 
         FlurryAgent.logEvent(FlurryEvent.KEYWORD_SEARCHED, params)
     }
@@ -155,12 +274,23 @@ class FlurryAnalyticsPlugin : Plugin() {
     fun logLocationSearched(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getString("query")?.let {
+            params.putString(FlurryEvent.Param.QUERY, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.LOCATION_SEARCHED, params)
     }
 
     @PluginMethod
     fun logInvite(call: PluginCall) {
         val params = FlurryEvent.Params()
+
+        call.getString("userId")?.let {
+            params.putString(FlurryEvent.Param.USER_ID, it)
+        }
+        call.getString("method")?.let {
+            params.putString(FlurryEvent.Param.METHOD, it)
+        }
 
         FlurryAgent.logEvent(FlurryEvent.INVITE, params)
     }
@@ -169,26 +299,69 @@ class FlurryAnalyticsPlugin : Plugin() {
     fun logShare(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getString("socialContentId")?.let {
+            params.putString(FlurryEvent.Param.SOCIAL_CONTENT_ID, it)
+        } ?: call.reject("Must provide a social content ID")
+
+        call.getString("socialContentName")?.let {
+            params.putString(FlurryEvent.Param.SOCIAL_CONTENT_NAME, it)
+        }
+        call.getString("method")?.let {
+            params.putString(FlurryEvent.Param.METHOD, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.SHARE, params)
+        call.resolve()
     }
 
     @PluginMethod
     fun logLike(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getString("socialContentId")?.let {
+            params.putString(FlurryEvent.Param.SOCIAL_CONTENT_ID, it)
+        } ?: call.reject("Must provide a social content ID")
+
+        call.getString("socialContentName")?.let {
+            params.putString(FlurryEvent.Param.SOCIAL_CONTENT_NAME, it)
+        }
+        call.getString("likeType")?.let {
+            params.putString(FlurryEvent.Param.LIKE_TYPE, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.LIKE, params)
+        call.resolve()
     }
 
     @PluginMethod
     fun logComment(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getString("socialContentId")?.let {
+            params.putString(FlurryEvent.Param.SOCIAL_CONTENT_ID, it)
+        } ?: call.reject("Must provide a social content ID")
+
+        call.getString("socialContentName")?.let {
+            params.putString(FlurryEvent.Param.SOCIAL_CONTENT_NAME, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.COMMENT, params)
+        call.resolve()
     }
 
     @PluginMethod
     fun logMediaCaptured(call: PluginCall) {
         val params = FlurryEvent.Params()
+
+        call.getString("mediaId")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_ID, it)
+        }
+        call.getString("mediaName")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_NAME, it)
+        }
+        call.getString("mediaType")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_TYPE, it)
+        }
 
         FlurryAgent.logEvent(FlurryEvent.MEDIA_CAPTURED, params)
     }
@@ -197,6 +370,16 @@ class FlurryAnalyticsPlugin : Plugin() {
     fun logMediaStarted(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getString("mediaId")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_ID, it)
+        }
+        call.getString("mediaName")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_NAME, it)
+        }
+        call.getString("mediaType")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_TYPE, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.MEDIA_STARTED, params)
     }
 
@@ -204,25 +387,71 @@ class FlurryAnalyticsPlugin : Plugin() {
     fun logMediaStopped(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getInt("duration")?.let {
+            params.putInteger(FlurryEvent.Param.DURATION, it)
+        } ?: call.reject("Must provide a duration")
+
+        call.getString("mediaId")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_ID, it)
+        }
+        call.getString("mediaName")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_NAME, it)
+        }
+        call.getString("mediaType")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_TYPE, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.MEDIA_STOPPED, params)
+        call.resolve()
     }
 
     @PluginMethod
     fun logMediaPaused(call: PluginCall) {
         val params = FlurryEvent.Params()
 
+        call.getInt("duration")?.let {
+            params.putInteger(FlurryEvent.Param.DURATION, it)
+        } ?: call.reject("Must provide a duration")
+
+        call.getString("mediaId")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_ID, it)
+        }
+        call.getString("mediaName")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_NAME, it)
+        }
+        call.getString("mediaType")?.let {
+            params.putString(FlurryEvent.Param.MEDIA_TYPE, it)
+        }
+
         FlurryAgent.logEvent(FlurryEvent.MEDIA_PAUSED, params)
+        call.resolve()
     }
 
     // Custom Events: https://developer.yahoo.com/flurry/docs/analytics/gettingstarted/events/ios/
     @PluginMethod
     fun logCustomEvent(call: PluginCall) {
-        val eventName: String = "Custom event"
-        val isTimed: Boolean = false
-        var customParams: HashMap<String, String>
-        customParams["customParamName"] = "customParamValue"
 
-        FlurryAgent.logEvent(eventName, customParams, isTimed)
+        var eventName: String = ""
+        call.getString("eventName")?.let {
+            eventName = it
+        } ?: run {
+            call.reject("Must provide a custom event name")
+            return
+        }
+
+        val isTimed: Boolean = call.getBoolean("eventTimed") == true
+
+        val eventMap: MutableMap<String, String> = mutableMapOf()
+        call.getObject("eventParams")?.let {
+            val keys = it.names()
+            if (keys != null) {
+                for (i in 0 until keys.length()){
+                    it.getString(keys.getString(i))?.let { it1 -> eventMap.put(keys.getString(i), it1) }
+                }
+            }
+        }
+
+        FlurryAgent.logEvent(eventName, eventMap, isTimed)
     }
 
     // Advanced Features: https://developer.yahoo.com/flurry/docs/analytics/gettingstarted/technicalquickstart/ios/
@@ -263,7 +492,6 @@ class FlurryAnalyticsPlugin : Plugin() {
 
     @PluginMethod
     fun logError(call: PluginCall) {
-
         FlurryAgent.onError("","An error has occurred","")
     }
 }
