@@ -2,7 +2,6 @@ package com.crowdhubapps.plugin.flurryanalytics
 
 import android.util.Log
 import com.getcapacitor.annotation.CapacitorPlugin
-import com.crowdhubapps.plugin.flurryanalytics.FlurryAnalytics
 import com.flurry.android.Constants
 import com.flurry.android.FlurryAgent
 import com.flurry.android.FlurryEvent
@@ -11,7 +10,7 @@ import com.getcapacitor.*
 
 @CapacitorPlugin(name = "FlurryAnalytics")
 class FlurryAnalyticsPlugin : Plugin() {
-    private val implementation = FlurryAnalytics()
+
     @PluginMethod
     fun initialize(call: PluginCall) {
         val logLevel: Int
