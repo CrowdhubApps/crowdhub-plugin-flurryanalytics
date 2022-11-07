@@ -25,6 +25,8 @@ FlurryAnalytics.initialize({
 
 Afterwards you can safely call any of the provided methods from the FlurryAnalytics class!
 
+For demographics methods (setAge, setGender, setUserId), these must be called prior to initializing a Flurry session.
+
 # iOS
 
 # Android
@@ -785,7 +787,7 @@ Log this event when an App user completes a level
 ### logLevelFailed(...)
 
 ```typescript
-logLevelFailed(options: { levelNumber?: number; levelName: string; }) => Promise<{ value: string; }>
+logLevelFailed(options: { levelNumber: number; levelName?: string; }) => Promise<{ value: string; }>
 ```
 
 Not yet implemented
@@ -793,7 +795,7 @@ Log this event when an App user fails a level
 
 | Param         | Type                                                      |
 | ------------- | --------------------------------------------------------- |
-| **`options`** | <code>{ levelNumber?: number; levelName: string; }</code> |
+| **`options`** | <code>{ levelNumber: number; levelName?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -803,7 +805,7 @@ Log this event when an App user fails a level
 ### logLevelUp(...)
 
 ```typescript
-logLevelUp(options: { levelNumber?: number; levelName: string; }) => Promise<{ value: string; }>
+logLevelUp(options: { levelNumber: number; levelName?: string; }) => Promise<{ value: string; }>
 ```
 
 Not yet implemented
@@ -811,7 +813,7 @@ Log this event when an App user levels up
 
 | Param         | Type                                                      |
 | ------------- | --------------------------------------------------------- |
-| **`options`** | <code>{ levelNumber?: number; levelName: string; }</code> |
+| **`options`** | <code>{ levelNumber: number; levelName?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -821,7 +823,7 @@ Log this event when an App user levels up
 ### logLevelStarted(...)
 
 ```typescript
-logLevelStarted(options: { levelNumber?: number; levelName: string; }) => Promise<{ value: string; }>
+logLevelStarted(options: { levelNumber: number; levelName?: string; }) => Promise<{ value: string; }>
 ```
 
 Not yet implemented
@@ -829,7 +831,7 @@ Log this event when an App user starts a level
 
 | Param         | Type                                                      |
 | ------------- | --------------------------------------------------------- |
-| **`options`** | <code>{ levelNumber?: number; levelName: string; }</code> |
+| **`options`** | <code>{ levelNumber: number; levelName?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -839,7 +841,7 @@ Log this event when an App user starts a level
 ### logLevelSkip(...)
 
 ```typescript
-logLevelSkip(options: { levelNumber?: number; levelName: string; }) => Promise<{ value: string; }>
+logLevelSkip(options: { levelNumber: number; levelName?: string; }) => Promise<{ value: string; }>
 ```
 
 Not yet implemented
@@ -847,7 +849,7 @@ Log this event when an App user skips a level
 
 | Param         | Type                                                      |
 | ------------- | --------------------------------------------------------- |
-| **`options`** | <code>{ levelNumber?: number; levelName: string; }</code> |
+| **`options`** | <code>{ levelNumber: number; levelName?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
@@ -1011,7 +1013,7 @@ Log this event when a list of items is viewed
 ### logPurchased(...)
 
 ```typescript
-logPurchased(options: { itemCount?: number; totalAmount: number; itemId?: string; success: boolean; itemName?: string; itemType?: string; currencyType?: string; transactionId?: string; }) => Promise<{ value: string; }>
+logPurchased(options: { totalAmount: number; success: boolean; itemCount?: number; itemId?: string; itemName?: string; itemType?: string; currencyType?: string; transactionId?: string; }) => Promise<{ value: string; }>
 ```
 
 Not yet implemented
@@ -1019,7 +1021,7 @@ Log this event when a user does a purchase in the App
 
 | Param         | Type                                                                                                                                                                              |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`options`** | <code>{ itemCount?: number; totalAmount: number; itemId?: string; success: boolean; itemName?: string; itemType?: string; currencyType?: string; transactionId?: string; }</code> |
+| **`options`** | <code>{ totalAmount: number; success: boolean; itemCount?: number; itemId?: string; itemName?: string; itemType?: string; currencyType?: string; transactionId?: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
