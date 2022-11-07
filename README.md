@@ -540,8 +540,6 @@ You may also enable this event to be timed, calling endTimedEvent to terminate i
 endTimedEvent(options: { eventName: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
-
 | Param         | Type                                |
 | ------------- | ----------------------------------- |
 | **`options`** | <code>{ eventName: string; }</code> |
@@ -628,7 +626,6 @@ Use this to log exceptions and/or errors that occur in your app. Flurry will rep
 logAdClick(options: { adType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user clicks on an Ad
 
 | Param         | Type                              |
@@ -646,7 +643,6 @@ Log this event when a user clicks on an Ad
 logAdImpression(options: { adType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user views an Ad impression
 
 | Param         | Type                              |
@@ -664,7 +660,6 @@ Log this event when a user views an Ad impression
 logAdRewarded(options: { adType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user is granted a reward for viewing a rewarded Ad
 
 | Param         | Type                              |
@@ -682,7 +677,6 @@ Log this event when a user is granted a reward for viewing a rewarded Ad
 logAdSkipped(options: { adType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user skips an Ad
 
 | Param         | Type                              |
@@ -700,7 +694,6 @@ Log this event when a user skips an Ad
 logCreditsSpent(options: { levelNumber?: number; totalAmount: number; isCurrencySoft?: boolean; creditType?: string; creditId?: string; creditName?: string; currencyType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user spends credit in the app
 
 | Param         | Type                                                                                                                                                                      |
@@ -718,7 +711,6 @@ Log this event when a user spends credit in the app
 logCreditsPurchased(options: { levelNumber?: number; totalAmount: number; isCurrencySoft?: boolean; creditType?: string; creditId?: string; creditName?: string; currencyType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user purchases credit in the app
 
 | Param         | Type                                                                                                                                                                      |
@@ -736,7 +728,6 @@ Log this event when a user purchases credit in the app
 logCreditsEarned(options: { levelNumber?: number; totalAmount: number; isCurrencySoft?: boolean; creditType?: string; creditId?: string; creditName?: string; currencyType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user earns credit in the app
 
 | Param         | Type                                                                                                                                                                      |
@@ -754,7 +745,6 @@ Log this event when a user earns credit in the app
 logAchievementUnlocked(options: { achievementId?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user unlocks an achievement in the app
 
 | Param         | Type                                     |
@@ -772,7 +762,6 @@ Log this event when a user unlocks an achievement in the app
 logLevelCompleted(options: { levelNumber: number; levelName?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when an App user completes a level
 
 | Param         | Type                                                      |
@@ -790,7 +779,6 @@ Log this event when an App user completes a level
 logLevelFailed(options: { levelNumber: number; levelName?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when an App user fails a level
 
 | Param         | Type                                                      |
@@ -808,7 +796,6 @@ Log this event when an App user fails a level
 logLevelUp(options: { levelNumber: number; levelName?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when an App user levels up
 
 | Param         | Type                                                      |
@@ -826,7 +813,6 @@ Log this event when an App user levels up
 logLevelStarted(options: { levelNumber: number; levelName?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when an App user starts a level
 
 | Param         | Type                                                      |
@@ -844,7 +830,6 @@ Log this event when an App user starts a level
 logLevelSkip(options: { levelNumber: number; levelName?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when an App user skips a level
 
 | Param         | Type                                                      |
@@ -862,7 +847,6 @@ Log this event when an App user skips a level
 logScorePosted(options: { levelNumber?: number; score: number; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when an App user posts his score
 
 | Param         | Type                                                  |
@@ -880,7 +864,6 @@ Log this event when an App user posts his score
 logAppActivated() => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when the App is activated
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
@@ -894,7 +877,6 @@ Log this event when the App is activated
 logApplicationSubmitted() => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user submits an application through the App
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
@@ -908,7 +890,6 @@ Log this event when a user submits an application through the App
 logAddItemToCart(options: { itemCount: number; price: number; itemId?: string; itemName?: string; itemType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when an item is added to the cart
 
 | Param         | Type                                                                                                      |
@@ -926,7 +907,6 @@ Log this event when an item is added to the cart
 logAddItemToWishList(options: { itemCount: number; price: number; itemId?: string; itemName?: string; itemType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when an item is added to the wish list
 
 | Param         | Type                                                                                                      |
@@ -944,7 +924,6 @@ Log this event when an item is added to the wish list
 logCompletedCheckout(options: { itemCount: number; totalAmount: number; currencyType?: string; transactionId?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when checkout is completed or transaction is successfully completed
 
 | Param         | Type                                                                                                    |
@@ -962,7 +941,6 @@ Log this event when checkout is completed or transaction is successfully complet
 logPaymentInfoAdded(options: { success: boolean; paymentType: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when payment information is added during a checkout process
 
 | Param         | Type                                                    |
@@ -980,7 +958,6 @@ Log this event when payment information is added during a checkout process
 logItemViewed(options: { price?: number; itemId: string; itemName?: string; itemType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when an item is viewed
 
 | Param         | Type                                                                                   |
@@ -998,7 +975,6 @@ Log this event when an item is viewed
 logItemListViewed(options: { itemListType: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a list of items is viewed
 
 | Param         | Type                                   |
@@ -1016,7 +992,6 @@ Log this event when a list of items is viewed
 logPurchased(options: { totalAmount: number; success: boolean; itemCount?: number; itemId?: string; itemName?: string; itemType?: string; currencyType?: string; transactionId?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user does a purchase in the App
 
 | Param         | Type                                                                                                                                                                              |
@@ -1034,7 +1009,6 @@ Log this event when a user does a purchase in the App
 logPurchaseRefunded(options: { price: number; currencyType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a purchase is refunded
 
 | Param         | Type                                                   |
@@ -1052,7 +1026,6 @@ Log this event when a purchase is refunded
 logRemoveItemFromCart(options: { price?: number; itemId: string; itemName?: string; itemType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user removes an item from the cart
 
 | Param         | Type                                                                                   |
@@ -1070,7 +1043,6 @@ Log this event when a user removes an item from the cart
 logCheckoutInitiated(options: { itemCount: number; totalAmount: number; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user starts checkout
 
 | Param         | Type                                                     |
@@ -1088,7 +1060,6 @@ Log this event when a user starts checkout
 logFundsDonated(options: { price: number; currencyType?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user donates fund to your App or through the App
 
 | Param         | Type                                                   |
@@ -1106,7 +1077,6 @@ Log this event when a user donates fund to your App or through the App
 logUserScheduled() => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when user schedules an appointment using the App
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
@@ -1120,7 +1090,6 @@ Log this event when user schedules an appointment using the App
 logOfferPresented(options: { price: number; itemId: string; itemName?: string; itemCategory?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when an offer is presented to the user
 
 | Param         | Type                                                                                      |
@@ -1138,7 +1107,6 @@ Log this event when an offer is presented to the user
 logTutorialStarted(options: { tutorialName?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user starts a tutorial
 
 | Param         | Type                                    |
@@ -1156,7 +1124,6 @@ Log this event when a user starts a tutorial
 logTutorialCompleted(options: { tutorialName?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user completes a tutorial
 
 | Param         | Type                                    |
@@ -1174,7 +1141,6 @@ Log this event when a user completes a tutorial
 logTutorialStepCompleted(options: { stepNumber: number; tutorialName?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a specific tutorial step is completed
 
 | Param         | Type                                                        |
@@ -1192,7 +1158,6 @@ Log this event when a specific tutorial step is completed
 logTutorialSkipped(options: { stepNumber: number; tutorialName?: string; }) => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when user skips the tutorial
 
 | Param         | Type                                                        |
@@ -1210,7 +1175,6 @@ Log this event when user skips the tutorial
 logPrivacyPromptDisplayed() => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a privacy prompt is displayed
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
@@ -1224,7 +1188,6 @@ Log this event when a privacy prompt is displayed
 logPrivacyOptIn() => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user opts in (on the privacy prompt)
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
@@ -1238,7 +1201,6 @@ Log this event when a user opts in (on the privacy prompt)
 logPrivacyOptOut() => Promise<{ value: string; }>
 ```
 
-Not yet implemented
 Log this event when a user opts out (on the privacy prompt)
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>

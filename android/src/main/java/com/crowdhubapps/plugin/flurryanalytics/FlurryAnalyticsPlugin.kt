@@ -469,6 +469,14 @@ class FlurryAnalyticsPlugin : Plugin() {
         call.resolve()
     }
 
+    @PluginMethod
+    fun endTimedEvent(call: PluginCall) {
+        call.getString("eventName")?.let {
+            FlurryAgent.endTimedEvent(it)
+            call.resolve()
+        } ?: call.reject("Must provide a custom event name")
+    }
+
     // Advanced Features: https://developer.yahoo.com/flurry/docs/analytics/gettingstarted/technicalquickstart/ios/
     @PluginMethod
     fun setUserId(call: PluginCall) {

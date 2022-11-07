@@ -226,7 +226,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * @param options
    */
   endTimedEvent(options: { eventName: string }): Promise<{ value: string }>;
@@ -263,35 +262,30 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user clicks on an Ad
    * @param options
    */
   logAdClick(options: { adType?: string }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user views an Ad impression
    * @param options
    */
   logAdImpression(options: { adType?: string }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user is granted a reward for viewing a rewarded Ad
    * @param options
    */
   logAdRewarded(options: { adType?: string }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user skips an Ad
    * @param options
    */
   logAdSkipped(options: { adType?: string }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user spends credit in the app
    * @param options
    */
@@ -306,7 +300,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user purchases credit in the app
    * @param options
    */
@@ -321,7 +314,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user earns credit in the app
    * @param options
    */
@@ -336,7 +328,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user unlocks an achievement in the app
    * @param options
    */
@@ -345,7 +336,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when an App user completes a level
    * @param options
    */
@@ -355,7 +345,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when an App user fails a level
    * @param options
    */
@@ -365,7 +354,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when an App user levels up
    * @param options
    */
@@ -375,7 +363,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when an App user starts a level
    * @param options
    */
@@ -385,7 +372,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when an App user skips a level
    * @param options
    */
@@ -395,7 +381,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when an App user posts his score
    * @param options
    */
@@ -405,19 +390,16 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when the App is activated
    */
   logAppActivated(): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user submits an application through the App
    */
   logApplicationSubmitted(): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when an item is added to the cart
    * @param options
    */
@@ -430,7 +412,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when an item is added to the wish list
    * @param options
    */
@@ -443,7 +424,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when checkout is completed or transaction is successfully completed
    * @param options
    */
@@ -455,7 +435,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when payment information is added during a checkout process
    * @param options
    */
@@ -465,7 +444,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when an item is viewed
    * @param options
    */
@@ -477,7 +455,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a list of items is viewed
    * @param options
    */
@@ -486,7 +463,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user does a purchase in the App
    * @param options
    */
@@ -502,7 +478,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a purchase is refunded
    * @param options
    */
@@ -512,7 +487,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user removes an item from the cart
    * @param options
    */
@@ -524,7 +498,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user starts checkout
    * @param options
    */
@@ -534,7 +507,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user donates fund to your App or through the App
    * @param options
    */
@@ -544,13 +516,11 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when user schedules an appointment using the App
    */
   logUserScheduled(): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when an offer is presented to the user
    * @param options
    */
@@ -562,7 +532,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user starts a tutorial
    * @param options
    */
@@ -571,7 +540,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user completes a tutorial
    * @param options
    */
@@ -580,7 +548,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a specific tutorial step is completed
    * @param options
    */
@@ -590,7 +557,6 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when user skips the tutorial
    * @param options
    */
@@ -600,19 +566,16 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a privacy prompt is displayed
    */
   logPrivacyPromptDisplayed(): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user opts in (on the privacy prompt)
    */
   logPrivacyOptIn(): Promise<{ value: string }>;
 
   /**
-   * Not yet implemented
    * Log this event when a user opts out (on the privacy prompt)
    */
   logPrivacyOptOut(): Promise<{ value: string }>;

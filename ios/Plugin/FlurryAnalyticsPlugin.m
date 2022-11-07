@@ -28,6 +28,7 @@ CAP_PLUGIN(FlurryAnalyticsPlugin, "FlurryAnalytics",
     CAP_PLUGIN_METHOD(logMediaStopped, CAPPluginReturnPromise);
     CAP_PLUGIN_METHOD(logMediaPaused, CAPPluginReturnPromise);
     CAP_PLUGIN_METHOD(logCustomEvent, CAPPluginReturnPromise);
+    CAP_PLUGIN_METHOD(endTimedEvent, CAPPluginReturnPromise);
     CAP_PLUGIN_METHOD(setUserId, CAPPluginReturnPromise);
     CAP_PLUGIN_METHOD(setAge, CAPPluginReturnPromise);
     CAP_PLUGIN_METHOD(setGender, CAPPluginReturnPromise);
