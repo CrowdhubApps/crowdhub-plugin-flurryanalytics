@@ -406,6 +406,7 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             call.reject("Must provide a user ID")
             return
         }
+        
         Flurry.set(userId: userId)
         call.resolve()
     }
@@ -415,6 +416,7 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             call.reject("Must provide a user age")
             return
         }
+        
         Flurry.set(age: Int32(userAge))
         call.resolve()
     }
@@ -424,6 +426,7 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             call.reject("Must provide a user gender")
             return
         }
+        
         Flurry.set(gender: userGender)
         call.resolve()
     }
@@ -432,5 +435,554 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
         let errorId = call.getString("errorId")!
         let errorMessage = call.getString("errorMessage", "An error occurred")
         Flurry.log(errorId: errorId, message: errorMessage, error: "Oh no!" as? any Error)
+    }
+    
+    @objc func logAdClick(_ call: CAPPluginCall){
+        let adType = call.getString("adType")!
+        let param = FlurryParamBuilder()
+            .set(stringVal: adType, param: FlurryParamBuilder.adType())
+        
+        Flurry.log(standardEvent: FlurryEvent.adClick, param: param)
+    }
+
+    @objc func logAdImpression(_ call: CAPPluginCall){
+        let adType = call.getString("adType")!
+        let param = FlurryParamBuilder()
+            .set(stringVal: adType, param: FlurryParamBuilder.adType())
+        
+        Flurry.log(standardEvent: FlurryEvent.adImpression, param: param)
+    }
+
+    @objc func logAdRewarded(_ call: CAPPluginCall){
+        let adType = call.getString("adType")!
+        let param = FlurryParamBuilder()
+            .set(stringVal: adType, param: FlurryParamBuilder.adType())
+        
+        Flurry.log(standardEvent: FlurryEvent.adRewarded, param: param)
+    }
+
+    @objc func logAdSkipped(_ call: CAPPluginCall){
+        let adType = call.getString("adType")!
+        let param = FlurryParamBuilder()
+            .set(stringVal: adType, param: FlurryParamBuilder.adType())
+        
+        Flurry.log(standardEvent: FlurryEvent.adSkipped, param: param)
+    }
+
+    @objc func logCreditsSpent(_ call: CAPPluginCall){
+        guard let totalAmount = call.getDouble("totalAmount") else {
+            call.reject("Must provide a total amount")
+            return
+        }
+        
+        let levelNumber = call.getInt("levelNumber")!
+        let isCurrencySoft = call.getBool("isCurrencySoft")!
+        let creditType = call.getString("creditType")!
+        let creditId = call.getString("creditId")!
+        let creditName = call.getString("creditName")!
+        let currencyType = call.getString("currencyType")!
+        
+        let param = FlurryParamBuilder()
+            .set(doubleVal: totalAmount, param: FlurryParamBuilder.totalAmount())
+            .set(integerVal: Int32(levelNumber), param: FlurryParamBuilder.levelNumber())
+            .set(booleanVal: isCurrencySoft, param: FlurryParamBuilder.isCurrencySoft())
+            .set(stringVal: creditType, param: FlurryParamBuilder.creditType())
+            .set(stringVal: creditId, param: FlurryParamBuilder.creditId())
+            .set(stringVal: creditName, param: FlurryParamBuilder.creditName())
+            .set(stringVal: currencyType, param: FlurryParamBuilder.currencyType())
+        
+        Flurry.log(standardEvent: FlurryEvent.creditsSpent, param: param)
+        call.resolve()
+    }
+
+
+    @objc func logCreditsPurchased(_ call: CAPPluginCall){
+        guard let totalAmount = call.getDouble("totalAmount") else {
+            call.reject("Must provide a total amount")
+            return
+        }
+        
+        let levelNumber = call.getInt("levelNumber")!
+        let isCurrencySoft = call.getBool("isCurrencySoft")!
+        let creditType = call.getString("creditType")!
+        let creditId = call.getString("creditId")!
+        let creditName = call.getString("creditName")!
+        let currencyType = call.getString("currencyType")!
+
+        
+        let param = FlurryParamBuilder()
+            .set(doubleVal: totalAmount, param: FlurryParamBuilder.totalAmount())
+            .set(integerVal: Int32(levelNumber), param: FlurryParamBuilder.levelNumber())
+            .set(booleanVal: isCurrencySoft, param: FlurryParamBuilder.isCurrencySoft())
+            .set(stringVal: creditType, param: FlurryParamBuilder.creditType())
+            .set(stringVal: creditId, param: FlurryParamBuilder.creditId())
+            .set(stringVal: creditName, param: FlurryParamBuilder.creditName())
+            .set(stringVal: currencyType, param: FlurryParamBuilder.currencyType())
+        
+        Flurry.log(standardEvent: FlurryEvent.creditsPurchased, param: param)
+        call.resolve()
+    }
+
+    @objc func logCreditsEarned(_ call: CAPPluginCall){
+        guard let totalAmount = call.getDouble("totalAmount") else {
+            call.reject("Must provide a total amount")
+            return
+        }
+        
+        let levelNumber = call.getInt("levelNumber")!
+        let isCurrencySoft = call.getBool("isCurrencySoft")!
+        let creditType = call.getString("creditType")!
+        let creditId = call.getString("creditId")!
+        let creditName = call.getString("creditName")!
+        let currencyType = call.getString("currencyType")!
+        
+        let param = FlurryParamBuilder()
+            .set(doubleVal: totalAmount, param: FlurryParamBuilder.totalAmount())
+            .set(integerVal: Int32(levelNumber), param: FlurryParamBuilder.levelNumber())
+            .set(booleanVal: isCurrencySoft, param: FlurryParamBuilder.isCurrencySoft())
+            .set(stringVal: creditType, param: FlurryParamBuilder.creditType())
+            .set(stringVal: creditId, param: FlurryParamBuilder.creditId())
+            .set(stringVal: creditName, param: FlurryParamBuilder.creditName())
+            .set(stringVal: currencyType, param: FlurryParamBuilder.currencyType())
+        
+        Flurry.log(standardEvent: FlurryEvent.creditsEarned, param: param)
+        call.resolve()
+    }
+
+    @objc func logAchievementUnlocked(_ call: CAPPluginCall){
+        let achievementId = call.getString("achievementId")!
+        
+        let param = FlurryParamBuilder()
+            .set(stringVal: achievementId, param: FlurryParamBuilder.achievementId())
+
+        Flurry.log(standardEvent: FlurryEvent.achievementUnlocked, param: param)
+    }
+
+    @objc func logLevelCompleted(_ call: CAPPluginCall){
+        guard let levelNumber = call.getInt("levelNumber") else {
+            call.reject("Must provide a level number")
+            return
+        }
+        
+        let levelName = call.getString("levelName")!
+        
+        let param = FlurryParamBuilder()
+            .set(integerVal: Int32(levelNumber), param: FlurryParamBuilder.levelNumber())
+            .set(stringVal: levelName, param: FlurryParamBuilder.levelName())
+
+        Flurry.log(standardEvent: FlurryEvent.levelCompleted, param: param)
+        call.resolve()
+    }
+
+    @objc func logLevelFailed(_ call: CAPPluginCall){
+        guard let levelNumber = call.getInt("levelNumber") else {
+            call.reject("Must provide a level number")
+            return
+        }
+        
+        let levelName = call.getString("levelName")!
+        
+        let param = FlurryParamBuilder()
+            .set(integerVal: Int32(levelNumber), param: FlurryParamBuilder.levelNumber())
+            .set(stringVal: levelName, param: FlurryParamBuilder.levelName())
+
+        Flurry.log(standardEvent: FlurryEvent.levelFailed, param: param)
+        call.resolve()
+    }
+
+    @objc func logLevelUp(_ call: CAPPluginCall){
+        guard let levelNumber = call.getInt("levelNumber") else {
+            call.reject("Must provide a level number")
+            return
+        }
+        
+        let levelName = call.getString("levelName")!
+        
+        let param = FlurryParamBuilder()
+            .set(integerVal: Int32(levelNumber), param: FlurryParamBuilder.levelNumber())
+            .set(stringVal: levelName, param: FlurryParamBuilder.levelName())
+
+        Flurry.log(standardEvent: FlurryEvent.levelUp, param: param)
+        call.resolve()
+    }
+
+    @objc func logLevelStarted(_ call: CAPPluginCall){
+        guard let levelNumber = call.getInt("levelNumber") else {
+            call.reject("Must provide a level number")
+            return
+        }
+        
+        let levelName = call.getString("levelName")!
+        
+        let param = FlurryParamBuilder()
+            .set(integerVal: Int32(levelNumber), param: FlurryParamBuilder.levelNumber())
+            .set(stringVal: levelName, param: FlurryParamBuilder.levelName())
+
+        Flurry.log(standardEvent: FlurryEvent.levelStarted, param: param)
+        call.resolve()
+    }
+
+    @objc func logLevelSkip(_ call: CAPPluginCall){
+        guard let levelNumber = call.getInt("levelNumber") else {
+            call.reject("Must provide a level number")
+            return
+        }
+        
+        let levelName = call.getString("levelName")!
+
+        let param = FlurryParamBuilder()
+            .set(integerVal: Int32(levelNumber), param: FlurryParamBuilder.levelNumber())
+            .set(stringVal: levelName, param: FlurryParamBuilder.levelName())
+
+        Flurry.log(standardEvent: FlurryEvent.levelSkip, param: param)
+        call.resolve()
+    }
+
+    @objc func logScorePosted(_ call: CAPPluginCall){
+        guard let score = call.getInt("score") else {
+            call.reject("Must provide a level number")
+            return
+        }
+        
+        let levelNumber = call.getInt("levelNumber")!
+        
+        let param = FlurryParamBuilder()
+            .set(integerVal: Int32(score), param: FlurryParamBuilder.score())
+            .set(integerVal: Int32(levelNumber), param: FlurryParamBuilder.levelNumber())
+            
+        Flurry.log(standardEvent: FlurryEvent.scorePosted, param: param)
+        call.resolve()
+    }
+
+    @objc func logAppActivated(_ call: CAPPluginCall){
+        Flurry.log(standardEvent: FlurryEvent.appActivated, param: nil)
+    }
+
+    @objc func logApplicationSubmitted(_ call: CAPPluginCall){
+        Flurry.log(standardEvent: FlurryEvent.applicationSubmitted, param: nil)
+    }
+
+    @objc func logAddItemToCart(_ call: CAPPluginCall){
+        guard let itemCount = call.getInt("itemCount") else {
+            call.reject("Must provide an item count")
+            return
+        }
+        
+        guard let price = call.getDouble("price") else {
+            call.reject("Must provide a price")
+            return
+        }
+        
+        let itemId = call.getString("itemId")!
+        let itemName = call.getString("itemName")!
+        let itemType = call.getString("itemType")!
+        
+        let param = FlurryParamBuilder()
+            .set(integerVal: Int32(itemCount), param: FlurryParamBuilder.itemCount())
+            .set(doubleVal: price, param: FlurryParamBuilder.price())
+            .set(stringVal: itemId, param: FlurryParamBuilder.itemId())
+            .set(stringVal: itemName, param: FlurryParamBuilder.itemName())
+            .set(stringVal: itemType, param: FlurryParamBuilder.itemType())
+        
+        Flurry.log(standardEvent: FlurryEvent.addItemToCart, param: param)
+        call.resolve()
+        
+    }
+
+    @objc func logAddItemToWishList(_ call: CAPPluginCall){
+        guard let itemCount = call.getInt("itemCount") else {
+            call.reject("Must provide an item count")
+            return
+        }
+        
+        guard let price = call.getDouble("price") else {
+            call.reject("Must provide a price")
+            return
+        }
+        
+        let itemId = call.getString("itemId")!
+        let itemName = call.getString("itemName")!
+        let itemType = call.getString("itemType")!
+        
+        let param = FlurryParamBuilder()
+            .set(integerVal: Int32(itemCount), param: FlurryParamBuilder.itemCount())
+            .set(doubleVal: price, param: FlurryParamBuilder.price())
+            .set(stringVal: itemId, param: FlurryParamBuilder.itemId())
+            .set(stringVal: itemName, param: FlurryParamBuilder.itemName())
+            .set(stringVal: itemType, param: FlurryParamBuilder.itemType())
+        
+        Flurry.log(standardEvent: FlurryEvent.addItemToWishList, param: param)
+        call.resolve()
+    }
+
+    @objc func logCompletedCheckout(_ call: CAPPluginCall){
+        guard let itemCount = call.getInt("itemCount") else {
+            call.reject("Must provide an item count")
+            return
+        }
+        
+        guard let totalAmount = call.getDouble("totalAmount") else {
+            call.reject("Must provide a total amount")
+            return
+        }
+        
+        let currencyType = call.getString("currencyType")!
+        let transactionId = call.getString("transactionId")!
+        
+        let param = FlurryParamBuilder()
+            .set(integerVal: Int32(itemCount), param: FlurryParamBuilder.itemCount())
+            .set(doubleVal: totalAmount, param: FlurryParamBuilder.totalAmount())
+            .set(stringVal: currencyType, param: FlurryParamBuilder.currencyType())
+            .set(stringVal: transactionId, param: FlurryParamBuilder.transactionId())
+        
+        Flurry.log(standardEvent: FlurryEvent.completedCheckout, param: param)
+        call.resolve()
+    }
+
+    @objc func logPaymentInfoAdded(_ call: CAPPluginCall){
+        guard let success = call.getBool("success") else {
+            call.reject("Must provide a success flag")
+            return
+        }
+        
+        guard let paymentType = call.getString("paymentType") else {
+            call.reject("Must provide a payment type")
+            return
+        }
+        
+        let param = FlurryParamBuilder()
+            .set(booleanVal: success, param: FlurryParamBuilder.success())
+            .set(stringVal: paymentType, param: FlurryParamBuilder.paymentType())
+        
+        Flurry.log(standardEvent: FlurryEvent.paymentInfoAdded, param: param)
+        call.resolve()
+    }
+
+    @objc func logItemViewed(_ call: CAPPluginCall){
+        guard let itemId = call.getString("itemId") else {
+            call.reject("Must provide an item ID")
+            return
+        }
+        
+        let price = call.getDouble("price")!
+        let itemName = call.getString("itemName")!
+        let itemType = call.getString("itemType")!
+
+        
+        let param = FlurryParamBuilder()
+            .set(stringVal: itemId, param: FlurryParamBuilder.itemId())
+            .set(doubleVal: price, param: FlurryParamBuilder.price())
+            .set(stringVal: itemName, param: FlurryParamBuilder.itemName())
+            .set(stringVal: itemType, param: FlurryParamBuilder.itemType())
+        
+        Flurry.log(standardEvent: FlurryEvent.itemViewed, param: param)
+        call.resolve()
+    }
+
+    @objc func logItemListViewed(_ call: CAPPluginCall){
+        guard let itemListType = call.getString("itemListType") else {
+            call.reject("Must provide an item list type")
+            return
+        }
+        
+        let param = FlurryParamBuilder()
+            .set(stringVal: itemListType, param: FlurryParamBuilder.itemListType())
+        
+        Flurry.log(standardEvent: FlurryEvent.itemListViewed, param: param)
+        call.resolve()
+    }
+
+    @objc func logPurchased(_ call: CAPPluginCall){
+        guard let totalAmount = call.getDouble("totalAmount") else {
+            call.reject("Must provide a total amount")
+            return
+        }
+        
+        guard let success = call.getBool("success") else {
+            call.reject("Must provide a success flag")
+            return
+        }
+        
+        let itemCount = call.getInt("itemCount")!
+        let itemId = call.getString("itemId")!
+        let itemName = call.getString("itemName")!
+        let itemType = call.getString("itemType")!
+        let currencyType = call.getString("currencyType")!
+        let transactionId = call.getString("transactionId")!
+        
+        let param = FlurryParamBuilder()
+            .set(doubleVal: totalAmount, param: FlurryParamBuilder.totalAmount())
+            .set(booleanVal: success, param: FlurryParamBuilder.success())
+            .set(integerVal: Int32(itemCount), param: FlurryParamBuilder.itemCount())
+            .set(stringVal: itemId, param: FlurryParamBuilder.itemId())
+            .set(stringVal: itemName, param: FlurryParamBuilder.itemName())
+            .set(stringVal: itemType, param: FlurryParamBuilder.itemType())
+            .set(stringVal: currencyType, param: FlurryParamBuilder.currencyType())
+            .set(stringVal: transactionId, param: FlurryParamBuilder.transactionId())
+        
+        Flurry.log(standardEvent: FlurryEvent.purchased, param: param)
+        call.resolve()
+    }
+
+    @objc func logPurchaseRefunded(_ call: CAPPluginCall){
+        guard let price = call.getDouble("price") else {
+            call.reject("Must provide a price")
+            return
+        }
+        
+        let currencyType = call.getString("currencyType")!
+        
+        let param = FlurryParamBuilder()
+            .set(doubleVal: price, param: FlurryParamBuilder.price())
+            .set(stringVal: currencyType, param: FlurryParamBuilder.currencyType())
+
+        Flurry.log(standardEvent: FlurryEvent.purchaseRefunded, param: param)
+        call.resolve()
+    }
+
+    @objc func logRemoveItemFromCart(_ call: CAPPluginCall){
+        guard let itemId = call.getString("itemId") else {
+            call.reject("Must provide an item ID")
+            return
+        }
+        
+        let price = call.getDouble("price")!
+        let itemName = call.getString("itemName")!
+        let itemType = call.getString("itemType")!
+        
+        let param = FlurryParamBuilder()
+            .set(stringVal: itemId, param: FlurryParamBuilder.itemId())
+            .set(doubleVal: price, param: FlurryParamBuilder.price())
+            .set(stringVal: itemName, param: FlurryParamBuilder.itemName())
+            .set(stringVal: itemType, param: FlurryParamBuilder.itemType())
+
+        Flurry.log(standardEvent: FlurryEvent.removeItemFromCart, param: param)
+        call.resolve()
+    }
+
+    @objc func logCheckoutInitiated(_ call: CAPPluginCall){
+        guard let totalAmount = call.getDouble("totalAmount") else {
+            call.reject("Must provide a total amount")
+            return
+        }
+        
+        guard let itemCount = call.getInt("itemCount") else {
+            call.reject("Must provide an item count")
+            return
+        }
+        
+        let param = FlurryParamBuilder()
+            .set(doubleVal: totalAmount, param: FlurryParamBuilder.totalAmount())
+            .set(integerVal: Int32(itemCount), param: FlurryParamBuilder.itemCount())
+
+        
+        Flurry.log(standardEvent: FlurryEvent.checkoutInitiated, param: param)
+        call.resolve()
+    }
+
+    @objc func logFundsDonated(_ call: CAPPluginCall){
+        guard let price = call.getDouble("price") else {
+            call.reject("Must provide a price")
+            return
+        }
+        
+        let currencyType = call.getString("currencyType")!
+        
+        let param = FlurryParamBuilder()
+            .set(doubleVal: price, param: FlurryParamBuilder.price())
+            .set(stringVal: currencyType, param: FlurryParamBuilder.currencyType())
+        
+        Flurry.log(standardEvent: FlurryEvent.fundsDonated, param: param)
+        call.resolve()
+    }
+
+    @objc func logUserScheduled(_ call: CAPPluginCall){
+        Flurry.log(standardEvent: FlurryEvent.userScheduled, param: nil)
+    }
+
+    @objc func logOfferPresented(_ call: CAPPluginCall){
+        guard let itemId = call.getString("itemId") else {
+            call.reject("Must provide an item ID")
+            return
+        }
+        
+        guard let price = call.getDouble("price") else {
+            call.reject("Must provide a price")
+            return
+        }
+        
+        let itemName = call.getString("itemName")!
+        let itemCategory = call.getString("itemCategory")!
+        
+        let param = FlurryParamBuilder()
+            .set(stringVal: itemId, param: FlurryParamBuilder.itemId())
+            .set(doubleVal: price, param: FlurryParamBuilder.price())
+            .set(stringVal: itemName, param: FlurryParamBuilder.itemName())
+            .set(stringVal: itemCategory, param: FlurryParamBuilder.itemCategory())
+
+        Flurry.log(standardEvent: FlurryEvent.offerPresented, param: param)
+        call.resolve()
+    }
+
+    @objc func logTutorialStarted(_ call: CAPPluginCall){
+        let tutorialName = call.getString("tutorialName")!
+        
+        let param = FlurryParamBuilder()
+            .set(stringVal: tutorialName, param: FlurryParamBuilder.tutorialName())
+
+        Flurry.log(standardEvent: FlurryEvent.tutorialStarted, param: param)
+    }
+
+    @objc func logTutorialCompleted(_ call: CAPPluginCall){
+        let tutorialName = call.getString("tutorialName")!
+        
+        let param = FlurryParamBuilder()
+            .set(stringVal: tutorialName, param: FlurryParamBuilder.tutorialName())
+
+        Flurry.log(standardEvent: FlurryEvent.tutorialCompleted, param: param)
+    }
+
+    @objc func logTutorialStepCompleted(_ call: CAPPluginCall){
+        guard let stepNumber = call.getInt("stepNumber") else {
+            call.reject("Must provide a step number")
+            return
+        }
+        
+        let tutorialName = call.getString("tutorialName")!
+        
+        let param = FlurryParamBuilder()
+            .set(integerVal: Int32(stepNumber), param: FlurryParamBuilder.stepNumber())
+            .set(stringVal: tutorialName, param: FlurryParamBuilder.tutorialName())
+
+        Flurry.log(standardEvent: FlurryEvent.tutorialStepCompleted, param: param)
+        call.resolve()
+    }
+
+    @objc func logTutorialSkipped(_ call: CAPPluginCall){
+        guard let stepNumber = call.getInt("stepNumber") else {
+            call.reject("Must provide a step number")
+            return
+        }
+        
+        let tutorialName = call.getString("tutorialName")!
+        
+        let param = FlurryParamBuilder()
+            .set(integerVal: Int32(stepNumber), param: FlurryParamBuilder.stepNumber())
+            .set(stringVal: tutorialName, param: FlurryParamBuilder.tutorialName())
+
+        Flurry.log(standardEvent: FlurryEvent.tutorialSkipped, param: param)
+        call.resolve()
+    }
+
+    @objc func logPrivacyPromptDisplayed(_ call: CAPPluginCall){
+        Flurry.log(standardEvent: FlurryEvent.privacyPromptDisplayed, param: nil)
+    }
+
+    @objc func logPrivacyOptIn(_ call: CAPPluginCall){
+        Flurry.log(standardEvent: FlurryEvent.privacyOptIn, param: nil)
+    }
+
+    @objc func logPrivacyOptOut(_ call: CAPPluginCall){
+        Flurry.log(standardEvent: FlurryEvent.privacyOptOut, param: nil)
     }
 }
