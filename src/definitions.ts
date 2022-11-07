@@ -360,8 +360,8 @@ export interface FlurryAnalyticsPlugin {
    * @param options
    */
   logLevelFailed(options: {
-    levelNumber?: number;
-    levelName: string;
+    levelNumber: number;
+    levelName?: string;
   }): Promise<{ value: string }>;
 
   /**
@@ -370,8 +370,8 @@ export interface FlurryAnalyticsPlugin {
    * @param options
    */
   logLevelUp(options: {
-    levelNumber?: number;
-    levelName: string;
+    levelNumber: number;
+    levelName?: string;
   }): Promise<{ value: string }>;
 
   /**
@@ -380,8 +380,8 @@ export interface FlurryAnalyticsPlugin {
    * @param options
    */
   logLevelStarted(options: {
-    levelNumber?: number;
-    levelName: string;
+    levelNumber: number;
+    levelName?: string;
   }): Promise<{ value: string }>;
 
   /**
@@ -390,8 +390,8 @@ export interface FlurryAnalyticsPlugin {
    * @param options
    */
   logLevelSkip(options: {
-    levelNumber?: number;
-    levelName: string;
+    levelNumber: number;
+    levelName?: string;
   }): Promise<{ value: string }>;
 
   /**
@@ -491,10 +491,10 @@ export interface FlurryAnalyticsPlugin {
    * @param options
    */
   logPurchased(options: {
-    itemCount?: number;
     totalAmount: number;
-    itemId?: string;
     success: boolean;
+    itemCount?: number;
+    itemId?: string;
     itemName?: string;
     itemType?: string;
     currencyType?: string;

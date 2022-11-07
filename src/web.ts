@@ -72,26 +72,26 @@ export class FlurryAnalyticsWeb
     throw new Error('Method not implemented.');
   }
   logLevelFailed(options: {
-    levelNumber?: number | undefined;
-    levelName: string;
+    levelNumber: number | undefined;
+    levelName?: string;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
   logLevelUp(options: {
-    levelNumber?: number | undefined;
-    levelName: string;
+    levelNumber: number | undefined;
+    levelName?: string;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
   logLevelStarted(options: {
-    levelNumber?: number | undefined;
-    levelName: string;
+    levelNumber: number | undefined;
+    levelName?: string;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
   logLevelSkip(options: {
-    levelNumber?: number | undefined;
-    levelName: string;
+    levelNumber: number | undefined;
+    levelName?: string;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
