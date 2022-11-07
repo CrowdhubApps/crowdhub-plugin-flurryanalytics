@@ -9,38 +9,80 @@ npm install crowdhub-plugin-flurryanalytics
 npx cap sync
 ```
 
+## Implementation
+
+# Web App
+
+In order to initialize a session, you simply need to call once within your app's session, so you'd likely want to include this call on a deviceready event.
+
+```typescript
+import { FlurryAnalytics } from 'crowdhub-plugin-flurryanalytics';
+
+FlurryAnalytics.initialize({
+  apiKey: 'YOUR-API-KEY-HERE',
+});
+```
+
+Afterwards you can safely call any of the provided methods from the FlurryAnalytics class!
+
+# iOS
+
+# Android
+
+As with many community created Capacitor plugins, you may need to manually register this plugin in your MainActivity.java like so:
+
+```java
+package your.app.bundle;
+
+import android.os.Bundle;
+import com.crowdhubapps.plugin.flurryanalytics.FlurryAnalyticsPlugin;
+import com.getcapacitor.BridgeActivity;
+
+public class MainActivity extends BridgeActivity {
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    registerPlugin(FlurryAnalyticsPlugin.class);
+    super.onCreate(savedInstanceState);
+  }
+}
+
+```
+
+If you get an error related to finding the package, you may also need to Right-Click the crowdhub-flurry-analytics folder in Android Studio and select the 'Convert Java File to Kotlin File' option. This will prompt you to configure Kotlin in the project, which is what the plugin is written in. You only need to configure Single module: android.crowdhubapps-plugin-flurryanalytics.
+
 ## API
 
 <docgen-index>
 
-* [`initialize(...)`](#initialize)
-* [`logContentRated(...)`](#logcontentrated)
-* [`logContentViewed(...)`](#logcontentviewed)
-* [`logContentSaved(...)`](#logcontentsaved)
-* [`logProductCustomized()`](#logproductcustomized)
-* [`logSubscriptionStarted(...)`](#logsubscriptionstarted)
-* [`logSubscriptionEnded(...)`](#logsubscriptionended)
-* [`logGroupJoined(...)`](#loggroupjoined)
-* [`logGroupLeft(...)`](#loggroupleft)
-* [`logLogin(...)`](#loglogin)
-* [`logLogout(...)`](#loglogout)
-* [`logUserRegistered(...)`](#loguserregistered)
-* [`logSearchResultViewed(...)`](#logsearchresultviewed)
-* [`logKeywordSearched(...)`](#logkeywordsearched)
-* [`logLocationSearched(...)`](#loglocationsearched)
-* [`logInvite(...)`](#loginvite)
-* [`logShare(...)`](#logshare)
-* [`logLike(...)`](#loglike)
-* [`logComment(...)`](#logcomment)
-* [`logMediaCaptured(...)`](#logmediacaptured)
-* [`logMediaStarted(...)`](#logmediastarted)
-* [`logMediaStopped(...)`](#logmediastopped)
-* [`logMediaPaused(...)`](#logmediapaused)
-* [`logCustomEvent(...)`](#logcustomevent)
-* [`setUserId(...)`](#setuserid)
-* [`setAge(...)`](#setage)
-* [`setGender(...)`](#setgender)
-* [`logError(...)`](#logerror)
+- [`initialize(...)`](#initialize)
+- [`logContentRated(...)`](#logcontentrated)
+- [`logContentViewed(...)`](#logcontentviewed)
+- [`logContentSaved(...)`](#logcontentsaved)
+- [`logProductCustomized()`](#logproductcustomized)
+- [`logSubscriptionStarted(...)`](#logsubscriptionstarted)
+- [`logSubscriptionEnded(...)`](#logsubscriptionended)
+- [`logGroupJoined(...)`](#loggroupjoined)
+- [`logGroupLeft(...)`](#loggroupleft)
+- [`logLogin(...)`](#loglogin)
+- [`logLogout(...)`](#loglogout)
+- [`logUserRegistered(...)`](#loguserregistered)
+- [`logSearchResultViewed(...)`](#logsearchresultviewed)
+- [`logKeywordSearched(...)`](#logkeywordsearched)
+- [`logLocationSearched(...)`](#loglocationsearched)
+- [`logInvite(...)`](#loginvite)
+- [`logShare(...)`](#logshare)
+- [`logLike(...)`](#loglike)
+- [`logComment(...)`](#logcomment)
+- [`logMediaCaptured(...)`](#logmediacaptured)
+- [`logMediaStarted(...)`](#logmediastarted)
+- [`logMediaStopped(...)`](#logmediastopped)
+- [`logMediaPaused(...)`](#logmediapaused)
+- [`logCustomEvent(...)`](#logcustomevent)
+- [`setUserId(...)`](#setuserid)
+- [`setAge(...)`](#setage)
+- [`setGender(...)`](#setgender)
+- [`logError(...)`](#logerror)
 
 </docgen-index>
 
@@ -59,8 +101,7 @@ initialize(opts: { apiKey: string; logLevel?: 'verbose' | 'debug' | 'info' | 'wa
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logContentRated(...)
 
@@ -74,8 +115,7 @@ logContentRated(opts: { contentId: string; contentRating: string; contentName?: 
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logContentViewed(...)
 
@@ -89,8 +129,7 @@ logContentViewed(opts: { contentId: string; contentName?: string; contentType?: 
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logContentSaved(...)
 
@@ -104,8 +143,7 @@ logContentSaved(opts: { contentId: string; contentName?: string; contentType?: s
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logProductCustomized()
 
@@ -115,8 +153,7 @@ logProductCustomized() => Promise<{ value: string; }>
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logSubscriptionStarted(...)
 
@@ -130,8 +167,7 @@ logSubscriptionStarted(opts: { price: number; isAnnualSubscription: boolean; tri
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logSubscriptionEnded(...)
 
@@ -145,8 +181,7 @@ logSubscriptionEnded(opts: { isAnnualSubscription: boolean; currencyType?: strin
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logGroupJoined(...)
 
@@ -160,8 +195,7 @@ logGroupJoined(opts: { groupName?: string; }) => Promise<{ value: string; }>
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logGroupLeft(...)
 
@@ -175,8 +209,7 @@ logGroupLeft(opts: { groupName?: string; }) => Promise<{ value: string; }>
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLogin(...)
 
@@ -190,8 +223,7 @@ logLogin(opts: { userId?: string; method?: string; }) => Promise<{ value: string
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLogout(...)
 
@@ -205,8 +237,7 @@ logLogout(opts: { userId?: string; method?: string; }) => Promise<{ value: strin
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logUserRegistered(...)
 
@@ -220,8 +251,7 @@ logUserRegistered(opts: { userId?: string; method?: string; }) => Promise<{ valu
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logSearchResultViewed(...)
 
@@ -235,8 +265,7 @@ logSearchResultViewed(opts: { query?: string; searchType?: string; }) => Promise
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logKeywordSearched(...)
 
@@ -250,8 +279,7 @@ logKeywordSearched(opts: { query?: string; searchType?: string; }) => Promise<{ 
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLocationSearched(...)
 
@@ -265,8 +293,7 @@ logLocationSearched(opts: { query?: string; }) => Promise<{ value: string; }>
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logInvite(...)
 
@@ -280,8 +307,7 @@ logInvite(opts: { userId?: string; method?: string; }) => Promise<{ value: strin
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logShare(...)
 
@@ -295,8 +321,7 @@ logShare(opts: { socialContentId: string; socialContentName?: string; method?: s
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLike(...)
 
@@ -310,8 +335,7 @@ logLike(opts: { socialContentId: string; socialContentName?: string; likeType?: 
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logComment(...)
 
@@ -325,8 +349,7 @@ logComment(opts: { socialContentId: string; socialContentName?: string; }) => Pr
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logMediaCaptured(...)
 
@@ -340,8 +363,7 @@ logMediaCaptured(opts: { mediaId?: string; mediaName?: string; mediaType?: strin
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logMediaStarted(...)
 
@@ -355,8 +377,7 @@ logMediaStarted(opts: { mediaId?: string; mediaName?: string; mediaType?: string
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logMediaStopped(...)
 
@@ -370,8 +391,7 @@ logMediaStopped(opts: { duration: number; mediaId?: string; mediaName?: string; 
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logMediaPaused(...)
 
@@ -385,8 +405,7 @@ logMediaPaused(opts: { duration: number; mediaId?: string; mediaName?: string; m
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logCustomEvent(...)
 
@@ -400,8 +419,7 @@ logCustomEvent(opts: { eventName: string; eventParams?: { [key: string]: any; } 
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### setUserId(...)
 
@@ -415,8 +433,7 @@ setUserId(opts: { userId: string; }) => Promise<{ value: string; }>
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### setAge(...)
 
@@ -430,8 +447,7 @@ setAge(opts: { userAge: number; }) => Promise<{ value: string; }>
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### setGender(...)
 
@@ -445,8 +461,7 @@ setGender(opts: { userGender: 'm' | 'f'; }) => Promise<{ value: string; }>
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logError(...)
 
@@ -460,6 +475,6 @@ logError(opts: { errorId?: string; errorMessage?: string; error?: string; }) => 
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
+---
 
 </docgen-api>
