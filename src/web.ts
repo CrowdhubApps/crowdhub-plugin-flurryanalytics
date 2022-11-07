@@ -7,7 +7,10 @@ export class FlurryAnalyticsWeb
   extends WebPlugin
   implements FlurryAnalyticsPlugin
 {
-  initialize(_opts: {
+  endTimedEvent(_options: { eventName: string }): Promise<{ value: string }> {
+    throw new Error('Method not implemented.');
+  }
+  initialize(_options: {
     apiKey: string;
     logLevel?: 'verbose' | 'debug' | 'info' | 'warn' | 'error' | undefined;
     crashReportingEnabled?: boolean | undefined;
@@ -16,7 +19,7 @@ export class FlurryAnalyticsWeb
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logContentRated(_opts: {
+  logContentRated(_options: {
     contentId: string;
     contentRating: string;
     contentName?: string | undefined;
@@ -24,14 +27,14 @@ export class FlurryAnalyticsWeb
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logContentViewed(_opts: {
+  logContentViewed(_options: {
     contentId: string;
     contentName?: string | undefined;
     contentType?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logContentSaved(_opts: {
+  logContentSaved(_options: {
     contentId: string;
     contentName?: string | undefined;
     contentType?: string | undefined;
@@ -41,7 +44,7 @@ export class FlurryAnalyticsWeb
   logProductCustomized(): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logSubscriptionStarted(_opts: {
+  logSubscriptionStarted(_options: {
     price: number;
     isAnnualSubscription: boolean;
     trialDays?: number | undefined;
@@ -51,99 +54,99 @@ export class FlurryAnalyticsWeb
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logSubscriptionEnded(_opts: {
+  logSubscriptionEnded(_options: {
     isAnnualSubscription: boolean;
     currencyType?: string | undefined;
     subscriptionCountry?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logGroupJoined(_opts: {
+  logGroupJoined(_options: {
     groupName?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logGroupLeft(_opts: {
+  logGroupLeft(_options: {
     groupName?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logLogin(_opts: {
+  logLogin(_options: {
     userId?: string | undefined;
     method?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logLogout(_opts: {
+  logLogout(_options: {
     userId?: string | undefined;
     method?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logUserRegistered(_opts: {
+  logUserRegistered(_options: {
     userId?: string | undefined;
     method?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logSearchResultViewed(_opts: {
+  logSearchResultViewed(_options: {
     query?: string | undefined;
     searchType?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logKeywordSearched(_opts: {
+  logKeywordSearched(_options: {
     query?: string | undefined;
     searchType?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logLocationSearched(_opts: {
+  logLocationSearched(_options: {
     query?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logInvite(_opts: {
+  logInvite(_options: {
     userId?: string | undefined;
     method?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logShare(_opts: {
+  logShare(_options: {
     socialContentId: string;
     socialContentName?: string | undefined;
     method?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logLike(_opts: {
+  logLike(_options: {
     socialContentId: string;
     socialContentName?: string | undefined;
     likeType?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logComment(_opts: {
+  logComment(_options: {
     socialContentId: string;
     socialContentName?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logMediaCaptured(_opts: {
+  logMediaCaptured(_options: {
     mediaId?: string | undefined;
     mediaName?: string | undefined;
     mediaType?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logMediaStarted(_opts: {
+  logMediaStarted(_options: {
     mediaId?: string | undefined;
     mediaName?: string | undefined;
     mediaType?: string | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logMediaStopped(_opts: {
+  logMediaStopped(_options: {
     duration: number;
     mediaId?: string | undefined;
     mediaName?: string | undefined;
@@ -151,7 +154,7 @@ export class FlurryAnalyticsWeb
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logMediaPaused(_opts: {
+  logMediaPaused(_options: {
     duration: number;
     mediaId?: string | undefined;
     mediaName?: string | undefined;
@@ -159,23 +162,23 @@ export class FlurryAnalyticsWeb
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logCustomEvent(_opts: {
+  logCustomEvent(_options: {
     eventName: string;
-    eventParams?: [Record<string, unknown>] | undefined;
+    eventParams?: { [key: string]: string } | undefined;
     eventTimed?: boolean | undefined;
   }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  setUserId(_opts: { userId: string }): Promise<{ value: string }> {
+  setUserId(_options: { userId: string }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  setAge(_opts: { userAge: number }): Promise<{ value: string }> {
+  setAge(_options: { userAge: number }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  setGender(_opts: { userGender: 'm' | 'f' }): Promise<{ value: string }> {
+  setGender(_options: { userGender: 'm' | 'f' }): Promise<{ value: string }> {
     throw new Error('Method not implemented.');
   }
-  logError(_opts: {
+  logError(_options: {
     errorId?: string | undefined;
     errorMessage?: string | undefined;
     error?: string | undefined;
