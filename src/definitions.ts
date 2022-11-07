@@ -226,7 +226,7 @@ export interface FlurryAnalyticsPlugin {
   }): Promise<{ value: string }>;
 
   /**
-   * TODO: Swift and Kotlin implementations
+   * Not yet implemented
    * @param options
    */
   endTimedEvent(options: { eventName: string }): Promise<{ value: string }>;
@@ -261,4 +261,359 @@ export interface FlurryAnalyticsPlugin {
     errorMessage?: string;
     error?: string;
   }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user clicks on an Ad
+   * @param options
+   */
+  logAdClick(options: { adType?: string }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user views an Ad impression
+   * @param options
+   */
+  logAdImpression(options: { adType?: string }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user is granted a reward for viewing a rewarded Ad
+   * @param options
+   */
+  logAdRewarded(options: { adType?: string }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user skips an Ad
+   * @param options
+   */
+  logAdSkipped(options: { adType?: string }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user spends credit in the app
+   * @param options
+   */
+  logCreditsSpent(options: {
+    levelNumber?: number;
+    totalAmount: number;
+    isCurrencySoft?: boolean;
+    creditType?: string;
+    creditId?: string;
+    creditName?: string;
+    currencyType?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user purchases credit in the app
+   * @param options
+   */
+  logCreditsPurchased(options: {
+    levelNumber?: number;
+    totalAmount: number;
+    isCurrencySoft?: boolean;
+    creditType?: string;
+    creditId?: string;
+    creditName?: string;
+    currencyType?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user earns credit in the app
+   * @param options
+   */
+  logCreditsEarned(options: {
+    levelNumber?: number;
+    totalAmount: number;
+    isCurrencySoft?: boolean;
+    creditType?: string;
+    creditId?: string;
+    creditName?: string;
+    currencyType?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user unlocks an achievement in the app
+   * @param options
+   */
+  logAchievementUnlocked(options: {
+    achievementId?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when an App user completes a level
+   * @param options
+   */
+  logLevelCompleted(options: {
+    levelNumber: number;
+    levelName?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when an App user fails a level
+   * @param options
+   */
+  logLevelFailed(options: {
+    levelNumber?: number;
+    levelName: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when an App user levels up
+   * @param options
+   */
+  logLevelUp(options: {
+    levelNumber?: number;
+    levelName: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when an App user starts a level
+   * @param options
+   */
+  logLevelStarted(options: {
+    levelNumber?: number;
+    levelName: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when an App user skips a level
+   * @param options
+   */
+  logLevelSkip(options: {
+    levelNumber?: number;
+    levelName: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when an App user posts his score
+   * @param options
+   */
+  logScorePosted(options: {
+    levelNumber?: number;
+    score: number;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when the App is activated
+   */
+  logAppActivated(): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user submits an application through the App
+   */
+  logApplicationSubmitted(): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when an item is added to the cart
+   * @param options
+   */
+  logAddItemToCart(options: {
+    itemCount: number;
+    price: number;
+    itemId?: string;
+    itemName?: string;
+    itemType?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when an item is added to the wish list
+   * @param options
+   */
+  logAddItemToWishList(options: {
+    itemCount: number;
+    price: number;
+    itemId?: string;
+    itemName?: string;
+    itemType?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when checkout is completed or transaction is successfully completed
+   * @param options
+   */
+  logCompletedCheckout(options: {
+    itemCount: number;
+    totalAmount: number;
+    currencyType?: string;
+    transactionId?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when payment information is added during a checkout process
+   * @param options
+   */
+  logPaymentInfoAdded(options: {
+    success: boolean;
+    paymentType: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when an item is viewed
+   * @param options
+   */
+  logItemViewed(options: {
+    price?: number;
+    itemId: string;
+    itemName?: string;
+    itemType?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a list of items is viewed
+   * @param options
+   */
+  logItemListViewed(options: {
+    itemListType: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user does a purchase in the App
+   * @param options
+   */
+  logPurchased(options: {
+    itemCount?: number;
+    totalAmount: number;
+    itemId?: string;
+    success: boolean;
+    itemName?: string;
+    itemType?: string;
+    currencyType?: string;
+    transactionId?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a purchase is refunded
+   * @param options
+   */
+  logPurchaseRefunded(options: {
+    price: number;
+    currencyType?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user removes an item from the cart
+   * @param options
+   */
+  logRemoveItemFromCart(options: {
+    price?: number;
+    itemId: string;
+    itemName?: string;
+    itemType?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user starts checkout
+   * @param options
+   */
+  logCheckoutInitiated(options: {
+    itemCount: number;
+    totalAmount: number;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user donates fund to your App or through the App
+   * @param options
+   */
+  logFundsDonated(options: {
+    price: number;
+    currencyType?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when user schedules an appointment using the App
+   */
+  logUserScheduled(): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when an offer is presented to the user
+   * @param options
+   */
+  logOfferPresented(options: {
+    price: number;
+    itemId: string;
+    itemName?: string;
+    itemCategory?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user starts a tutorial
+   * @param options
+   */
+  logTutorialStarted(options: {
+    tutorialName?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user completes a tutorial
+   * @param options
+   */
+  logTutorialCompleted(options: {
+    tutorialName?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a specific tutorial step is completed
+   * @param options
+   */
+  logTutorialStepCompleted(options: {
+    stepNumber: number;
+    tutorialName?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when user skips the tutorial
+   * @param options
+   */
+  logTutorialSkipped(options: {
+    stepNumber: number;
+    tutorialName?: string;
+  }): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a privacy prompt is displayed
+   */
+  logPrivacyPromptDisplayed(): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user opts in (on the privacy prompt)
+   */
+  logPrivacyOptIn(): Promise<{ value: string }>;
+
+  /**
+   * Not yet implemented
+   * Log this event when a user opts out (on the privacy prompt)
+   */
+  logPrivacyOptOut(): Promise<{ value: string }>;
 }

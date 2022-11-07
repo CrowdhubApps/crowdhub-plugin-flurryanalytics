@@ -84,6 +84,42 @@ If you get an error related to finding the package, you may also need to Right-C
 * [`setAge(...)`](#setage)
 * [`setGender(...)`](#setgender)
 * [`logError(...)`](#logerror)
+* [`logAdClick(...)`](#logadclick)
+* [`logAdImpression(...)`](#logadimpression)
+* [`logAdRewarded(...)`](#logadrewarded)
+* [`logAdSkipped(...)`](#logadskipped)
+* [`logCreditsSpent(...)`](#logcreditsspent)
+* [`logCreditsPurchased(...)`](#logcreditspurchased)
+* [`logCreditsEarned(...)`](#logcreditsearned)
+* [`logAchievementUnlocked(...)`](#logachievementunlocked)
+* [`logLevelCompleted(...)`](#loglevelcompleted)
+* [`logLevelFailed(...)`](#loglevelfailed)
+* [`logLevelUp(...)`](#loglevelup)
+* [`logLevelStarted(...)`](#loglevelstarted)
+* [`logLevelSkip(...)`](#loglevelskip)
+* [`logScorePosted(...)`](#logscoreposted)
+* [`logAppActivated()`](#logappactivated)
+* [`logApplicationSubmitted()`](#logapplicationsubmitted)
+* [`logAddItemToCart(...)`](#logadditemtocart)
+* [`logAddItemToWishList(...)`](#logadditemtowishlist)
+* [`logCompletedCheckout(...)`](#logcompletedcheckout)
+* [`logPaymentInfoAdded(...)`](#logpaymentinfoadded)
+* [`logItemViewed(...)`](#logitemviewed)
+* [`logItemListViewed(...)`](#logitemlistviewed)
+* [`logPurchased(...)`](#logpurchased)
+* [`logPurchaseRefunded(...)`](#logpurchaserefunded)
+* [`logRemoveItemFromCart(...)`](#logremoveitemfromcart)
+* [`logCheckoutInitiated(...)`](#logcheckoutinitiated)
+* [`logFundsDonated(...)`](#logfundsdonated)
+* [`logUserScheduled()`](#loguserscheduled)
+* [`logOfferPresented(...)`](#logofferpresented)
+* [`logTutorialStarted(...)`](#logtutorialstarted)
+* [`logTutorialCompleted(...)`](#logtutorialcompleted)
+* [`logTutorialStepCompleted(...)`](#logtutorialstepcompleted)
+* [`logTutorialSkipped(...)`](#logtutorialskipped)
+* [`logPrivacyPromptDisplayed()`](#logprivacypromptdisplayed)
+* [`logPrivacyOptIn()`](#logprivacyoptin)
+* [`logPrivacyOptOut()`](#logprivacyoptout)
 
 </docgen-index>
 
@@ -502,7 +538,7 @@ You may also enable this event to be timed, calling endTimedEvent to terminate i
 endTimedEvent(options: { eventName: string; }) => Promise<{ value: string; }>
 ```
 
-TODO: Swift and Kotlin implementations
+Not yet implemented
 
 | Param         | Type                                |
 | ------------- | ----------------------------------- |
@@ -578,6 +614,630 @@ Use this to log exceptions and/or errors that occur in your app. Flurry will rep
 | Param         | Type                                                                      |
 | ------------- | ------------------------------------------------------------------------- |
 | **`options`** | <code>{ errorId?: string; errorMessage?: string; error?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logAdClick(...)
+
+```typescript
+logAdClick(options: { adType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user clicks on an Ad
+
+| Param         | Type                              |
+| ------------- | --------------------------------- |
+| **`options`** | <code>{ adType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logAdImpression(...)
+
+```typescript
+logAdImpression(options: { adType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user views an Ad impression
+
+| Param         | Type                              |
+| ------------- | --------------------------------- |
+| **`options`** | <code>{ adType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logAdRewarded(...)
+
+```typescript
+logAdRewarded(options: { adType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user is granted a reward for viewing a rewarded Ad
+
+| Param         | Type                              |
+| ------------- | --------------------------------- |
+| **`options`** | <code>{ adType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logAdSkipped(...)
+
+```typescript
+logAdSkipped(options: { adType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user skips an Ad
+
+| Param         | Type                              |
+| ------------- | --------------------------------- |
+| **`options`** | <code>{ adType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logCreditsSpent(...)
+
+```typescript
+logCreditsSpent(options: { levelNumber?: number; totalAmount: number; isCurrencySoft?: boolean; creditType?: string; creditId?: string; creditName?: string; currencyType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user spends credit in the app
+
+| Param         | Type                                                                                                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code>{ levelNumber?: number; totalAmount: number; isCurrencySoft?: boolean; creditType?: string; creditId?: string; creditName?: string; currencyType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logCreditsPurchased(...)
+
+```typescript
+logCreditsPurchased(options: { levelNumber?: number; totalAmount: number; isCurrencySoft?: boolean; creditType?: string; creditId?: string; creditName?: string; currencyType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user purchases credit in the app
+
+| Param         | Type                                                                                                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code>{ levelNumber?: number; totalAmount: number; isCurrencySoft?: boolean; creditType?: string; creditId?: string; creditName?: string; currencyType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logCreditsEarned(...)
+
+```typescript
+logCreditsEarned(options: { levelNumber?: number; totalAmount: number; isCurrencySoft?: boolean; creditType?: string; creditId?: string; creditName?: string; currencyType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user earns credit in the app
+
+| Param         | Type                                                                                                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code>{ levelNumber?: number; totalAmount: number; isCurrencySoft?: boolean; creditType?: string; creditId?: string; creditName?: string; currencyType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logAchievementUnlocked(...)
+
+```typescript
+logAchievementUnlocked(options: { achievementId?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user unlocks an achievement in the app
+
+| Param         | Type                                     |
+| ------------- | ---------------------------------------- |
+| **`options`** | <code>{ achievementId?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logLevelCompleted(...)
+
+```typescript
+logLevelCompleted(options: { levelNumber: number; levelName?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when an App user completes a level
+
+| Param         | Type                                                      |
+| ------------- | --------------------------------------------------------- |
+| **`options`** | <code>{ levelNumber: number; levelName?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logLevelFailed(...)
+
+```typescript
+logLevelFailed(options: { levelNumber?: number; levelName: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when an App user fails a level
+
+| Param         | Type                                                      |
+| ------------- | --------------------------------------------------------- |
+| **`options`** | <code>{ levelNumber?: number; levelName: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logLevelUp(...)
+
+```typescript
+logLevelUp(options: { levelNumber?: number; levelName: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when an App user levels up
+
+| Param         | Type                                                      |
+| ------------- | --------------------------------------------------------- |
+| **`options`** | <code>{ levelNumber?: number; levelName: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logLevelStarted(...)
+
+```typescript
+logLevelStarted(options: { levelNumber?: number; levelName: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when an App user starts a level
+
+| Param         | Type                                                      |
+| ------------- | --------------------------------------------------------- |
+| **`options`** | <code>{ levelNumber?: number; levelName: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logLevelSkip(...)
+
+```typescript
+logLevelSkip(options: { levelNumber?: number; levelName: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when an App user skips a level
+
+| Param         | Type                                                      |
+| ------------- | --------------------------------------------------------- |
+| **`options`** | <code>{ levelNumber?: number; levelName: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logScorePosted(...)
+
+```typescript
+logScorePosted(options: { levelNumber?: number; score: number; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when an App user posts his score
+
+| Param         | Type                                                  |
+| ------------- | ----------------------------------------------------- |
+| **`options`** | <code>{ levelNumber?: number; score: number; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logAppActivated()
+
+```typescript
+logAppActivated() => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when the App is activated
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logApplicationSubmitted()
+
+```typescript
+logApplicationSubmitted() => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user submits an application through the App
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logAddItemToCart(...)
+
+```typescript
+logAddItemToCart(options: { itemCount: number; price: number; itemId?: string; itemName?: string; itemType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when an item is added to the cart
+
+| Param         | Type                                                                                                      |
+| ------------- | --------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code>{ itemCount: number; price: number; itemId?: string; itemName?: string; itemType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logAddItemToWishList(...)
+
+```typescript
+logAddItemToWishList(options: { itemCount: number; price: number; itemId?: string; itemName?: string; itemType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when an item is added to the wish list
+
+| Param         | Type                                                                                                      |
+| ------------- | --------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code>{ itemCount: number; price: number; itemId?: string; itemName?: string; itemType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logCompletedCheckout(...)
+
+```typescript
+logCompletedCheckout(options: { itemCount: number; totalAmount: number; currencyType?: string; transactionId?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when checkout is completed or transaction is successfully completed
+
+| Param         | Type                                                                                                    |
+| ------------- | ------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code>{ itemCount: number; totalAmount: number; currencyType?: string; transactionId?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logPaymentInfoAdded(...)
+
+```typescript
+logPaymentInfoAdded(options: { success: boolean; paymentType: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when payment information is added during a checkout process
+
+| Param         | Type                                                    |
+| ------------- | ------------------------------------------------------- |
+| **`options`** | <code>{ success: boolean; paymentType: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logItemViewed(...)
+
+```typescript
+logItemViewed(options: { price?: number; itemId: string; itemName?: string; itemType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when an item is viewed
+
+| Param         | Type                                                                                   |
+| ------------- | -------------------------------------------------------------------------------------- |
+| **`options`** | <code>{ price?: number; itemId: string; itemName?: string; itemType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logItemListViewed(...)
+
+```typescript
+logItemListViewed(options: { itemListType: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a list of items is viewed
+
+| Param         | Type                                   |
+| ------------- | -------------------------------------- |
+| **`options`** | <code>{ itemListType: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logPurchased(...)
+
+```typescript
+logPurchased(options: { itemCount?: number; totalAmount: number; itemId?: string; success: boolean; itemName?: string; itemType?: string; currencyType?: string; transactionId?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user does a purchase in the App
+
+| Param         | Type                                                                                                                                                                              |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`options`** | <code>{ itemCount?: number; totalAmount: number; itemId?: string; success: boolean; itemName?: string; itemType?: string; currencyType?: string; transactionId?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logPurchaseRefunded(...)
+
+```typescript
+logPurchaseRefunded(options: { price: number; currencyType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a purchase is refunded
+
+| Param         | Type                                                   |
+| ------------- | ------------------------------------------------------ |
+| **`options`** | <code>{ price: number; currencyType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logRemoveItemFromCart(...)
+
+```typescript
+logRemoveItemFromCart(options: { price?: number; itemId: string; itemName?: string; itemType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user removes an item from the cart
+
+| Param         | Type                                                                                   |
+| ------------- | -------------------------------------------------------------------------------------- |
+| **`options`** | <code>{ price?: number; itemId: string; itemName?: string; itemType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logCheckoutInitiated(...)
+
+```typescript
+logCheckoutInitiated(options: { itemCount: number; totalAmount: number; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user starts checkout
+
+| Param         | Type                                                     |
+| ------------- | -------------------------------------------------------- |
+| **`options`** | <code>{ itemCount: number; totalAmount: number; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logFundsDonated(...)
+
+```typescript
+logFundsDonated(options: { price: number; currencyType?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user donates fund to your App or through the App
+
+| Param         | Type                                                   |
+| ------------- | ------------------------------------------------------ |
+| **`options`** | <code>{ price: number; currencyType?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logUserScheduled()
+
+```typescript
+logUserScheduled() => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when user schedules an appointment using the App
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logOfferPresented(...)
+
+```typescript
+logOfferPresented(options: { price: number; itemId: string; itemName?: string; itemCategory?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when an offer is presented to the user
+
+| Param         | Type                                                                                      |
+| ------------- | ----------------------------------------------------------------------------------------- |
+| **`options`** | <code>{ price: number; itemId: string; itemName?: string; itemCategory?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logTutorialStarted(...)
+
+```typescript
+logTutorialStarted(options: { tutorialName?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user starts a tutorial
+
+| Param         | Type                                    |
+| ------------- | --------------------------------------- |
+| **`options`** | <code>{ tutorialName?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logTutorialCompleted(...)
+
+```typescript
+logTutorialCompleted(options: { tutorialName?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user completes a tutorial
+
+| Param         | Type                                    |
+| ------------- | --------------------------------------- |
+| **`options`** | <code>{ tutorialName?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logTutorialStepCompleted(...)
+
+```typescript
+logTutorialStepCompleted(options: { stepNumber: number; tutorialName?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a specific tutorial step is completed
+
+| Param         | Type                                                        |
+| ------------- | ----------------------------------------------------------- |
+| **`options`** | <code>{ stepNumber: number; tutorialName?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logTutorialSkipped(...)
+
+```typescript
+logTutorialSkipped(options: { stepNumber: number; tutorialName?: string; }) => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when user skips the tutorial
+
+| Param         | Type                                                        |
+| ------------- | ----------------------------------------------------------- |
+| **`options`** | <code>{ stepNumber: number; tutorialName?: string; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logPrivacyPromptDisplayed()
+
+```typescript
+logPrivacyPromptDisplayed() => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a privacy prompt is displayed
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logPrivacyOptIn()
+
+```typescript
+logPrivacyOptIn() => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user opts in (on the privacy prompt)
+
+**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### logPrivacyOptOut()
+
+```typescript
+logPrivacyOptOut() => Promise<{ value: string; }>
+```
+
+Not yet implemented
+Log this event when a user opts out (on the privacy prompt)
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
