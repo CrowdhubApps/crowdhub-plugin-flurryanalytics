@@ -38,7 +38,7 @@
     "fmt": "npx rome format src --write && npm run swiftlint -- --fix --format",
     "swiftlint": "node-swiftlint",
     "docgen": "docgen --api FlurryAnalyticsPlugin --output-readme README.md --output-json dist/docs.json",
-    "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.js",
+    "build": "npm run clean && npm run lint && npm run fmt && npm run docgen && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build"
