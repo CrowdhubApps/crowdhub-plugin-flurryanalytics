@@ -131,7 +131,7 @@ If you get an error related to finding the package, you may also need to Right-C
 ### initialize(...)
 
 ```typescript
-initialize(options: { apiKey: string; logLevel?: 'verbose' | 'debug' | 'info' | 'warn' | 'error'; crashReportingEnabled?: boolean; appVersion?: string; iapReportingEnabled?: boolean; }) => Promise<{ value: string; }>
+initialize(options: { apiKey: string; logLevel?: "verbose" | "debug" | "info" | "warn" | "error"; crashReportingEnabled?: boolean; appVersion?: string; iapReportingEnabled?: boolean; }) => Promise<{ value: string; }>
 ```
 
 Initialize Flurry once within the session by passing through an API key
@@ -588,7 +588,7 @@ You must call this function prior to starting the Flurry session
 ### setGender(...)
 
 ```typescript
-setGender(options: { userGender: 'm' | 'f'; }) => Promise<{ value: string; }>
+setGender(options: { userGender: "m" | "f"; }) => Promise<{ value: string; }>
 ```
 
 After identifying the user, use this to log the user’s gender. Valid inputs are m (male) or f (female).

@@ -748,10 +748,7 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
         }
         let param = FlurryParamBuilder()
             .set(doubleVal: price, param: FlurryParamBuilder.price())
-        if let currencyType = call.getString("currencyType"){param.set(stringVal: currencyType, param: FlurryParamBuilder.currencyType())}
-
-
-            
+        if let currencyType = call.getString("currencyType") {param.set(stringVal: currencyType, param: FlurryParamBuilder.currencyType())}
 
         Flurry.log(standardEvent: FlurryEvent.purchaseRefunded, param: param)
         call.resolve()
