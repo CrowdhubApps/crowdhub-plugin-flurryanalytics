@@ -46,9 +46,10 @@ public class FlurryAnalyticsPlugin: CAPPlugin {
             .build(crashReportingEnabled: crashReportingEnabled)
             .build(appVersion: appVersion)
             .build(iapReportingEnabled: iapReportingEnabled)
-
-        Flurry.startSession(apiKey: apiKey, sessionBuilder: sb)
-        call.resolve()
+        DispatchQueue.main.async {
+            Flurry.startSession(apiKey: apiKey, sessionBuilder: sb)
+            call.resolve()
+        }
     }
 
     // StandardEvents: https://developer.yahoo.com/flurry/docs/analytics/standard_events/iOS/
