@@ -15,6 +15,7 @@ Capacitor 4:
 
 ```bash
 npm install crowdhub-plugin-flurryanalytics@4
+npx cap sync
 ```
 
 ## Implementation
