@@ -4,9 +4,17 @@ This plugin provides an interface for Capacitor apps to use the Flurry Analytics
 
 ## Install
 
+Capacitor 5:
+
 ```bash
-npm install crowdhub-plugin-flurryanalytics
+npm install crowdhub-plugin-flurryanalytics@latest
 npx cap sync
+```
+
+Capacitor 4:
+
+```bash
+npm install crowdhub-plugin-flurryanalytics@4
 ```
 
 ## Implementation
@@ -16,10 +24,10 @@ npx cap sync
 In order to initialize a session, you simply need to call once within your app's session, so you'd likely want to include this call on a deviceready event.
 
 ```typescript
-import { FlurryAnalytics } from 'crowdhub-plugin-flurryanalytics';
+import { FlurryAnalytics } from "crowdhub-plugin-flurryanalytics";
 
 FlurryAnalytics.initialize({
-  apiKey: 'YOUR-API-KEY-HERE',
+  apiKey: "YOUR-API-KEY-HERE",
 });
 ```
 
@@ -57,71 +65,71 @@ If you get an error related to finding the package, you may also need to Right-C
 
 <docgen-index>
 
-* [`initialize(...)`](#initialize)
-* [`logContentRated(...)`](#logcontentrated)
-* [`logContentViewed(...)`](#logcontentviewed)
-* [`logContentSaved(...)`](#logcontentsaved)
-* [`logProductCustomized()`](#logproductcustomized)
-* [`logSubscriptionStarted(...)`](#logsubscriptionstarted)
-* [`logSubscriptionEnded(...)`](#logsubscriptionended)
-* [`logGroupJoined(...)`](#loggroupjoined)
-* [`logGroupLeft(...)`](#loggroupleft)
-* [`logLogin(...)`](#loglogin)
-* [`logLogout(...)`](#loglogout)
-* [`logUserRegistered(...)`](#loguserregistered)
-* [`logSearchResultViewed(...)`](#logsearchresultviewed)
-* [`logKeywordSearched(...)`](#logkeywordsearched)
-* [`logLocationSearched(...)`](#loglocationsearched)
-* [`logInvite(...)`](#loginvite)
-* [`logShare(...)`](#logshare)
-* [`logLike(...)`](#loglike)
-* [`logComment(...)`](#logcomment)
-* [`logMediaCaptured(...)`](#logmediacaptured)
-* [`logMediaStarted(...)`](#logmediastarted)
-* [`logMediaStopped(...)`](#logmediastopped)
-* [`logMediaPaused(...)`](#logmediapaused)
-* [`logCustomEvent(...)`](#logcustomevent)
-* [`endTimedEvent(...)`](#endtimedevent)
-* [`setUserId(...)`](#setuserid)
-* [`setAge(...)`](#setage)
-* [`setGender(...)`](#setgender)
-* [`logError(...)`](#logerror)
-* [`logAdClick(...)`](#logadclick)
-* [`logAdImpression(...)`](#logadimpression)
-* [`logAdRewarded(...)`](#logadrewarded)
-* [`logAdSkipped(...)`](#logadskipped)
-* [`logCreditsSpent(...)`](#logcreditsspent)
-* [`logCreditsPurchased(...)`](#logcreditspurchased)
-* [`logCreditsEarned(...)`](#logcreditsearned)
-* [`logAchievementUnlocked(...)`](#logachievementunlocked)
-* [`logLevelCompleted(...)`](#loglevelcompleted)
-* [`logLevelFailed(...)`](#loglevelfailed)
-* [`logLevelUp(...)`](#loglevelup)
-* [`logLevelStarted(...)`](#loglevelstarted)
-* [`logLevelSkip(...)`](#loglevelskip)
-* [`logScorePosted(...)`](#logscoreposted)
-* [`logAppActivated()`](#logappactivated)
-* [`logApplicationSubmitted()`](#logapplicationsubmitted)
-* [`logAddItemToCart(...)`](#logadditemtocart)
-* [`logAddItemToWishList(...)`](#logadditemtowishlist)
-* [`logCompletedCheckout(...)`](#logcompletedcheckout)
-* [`logPaymentInfoAdded(...)`](#logpaymentinfoadded)
-* [`logItemViewed(...)`](#logitemviewed)
-* [`logItemListViewed(...)`](#logitemlistviewed)
-* [`logPurchased(...)`](#logpurchased)
-* [`logPurchaseRefunded(...)`](#logpurchaserefunded)
-* [`logRemoveItemFromCart(...)`](#logremoveitemfromcart)
-* [`logCheckoutInitiated(...)`](#logcheckoutinitiated)
-* [`logFundsDonated(...)`](#logfundsdonated)
-* [`logUserScheduled()`](#loguserscheduled)
-* [`logOfferPresented(...)`](#logofferpresented)
-* [`logTutorialStarted(...)`](#logtutorialstarted)
-* [`logTutorialCompleted(...)`](#logtutorialcompleted)
-* [`logTutorialStepCompleted(...)`](#logtutorialstepcompleted)
-* [`logTutorialSkipped(...)`](#logtutorialskipped)
-* [`logPrivacyPromptDisplayed()`](#logprivacypromptdisplayed)
-* [`logPrivacyOptIn()`](#logprivacyoptin)
-* [`logPrivacyOptOut()`](#logprivacyoptout)
+- [`initialize(...)`](#initialize)
+- [`logContentRated(...)`](#logcontentrated)
+- [`logContentViewed(...)`](#logcontentviewed)
+- [`logContentSaved(...)`](#logcontentsaved)
+- [`logProductCustomized()`](#logproductcustomized)
+- [`logSubscriptionStarted(...)`](#logsubscriptionstarted)
+- [`logSubscriptionEnded(...)`](#logsubscriptionended)
+- [`logGroupJoined(...)`](#loggroupjoined)
+- [`logGroupLeft(...)`](#loggroupleft)
+- [`logLogin(...)`](#loglogin)
+- [`logLogout(...)`](#loglogout)
+- [`logUserRegistered(...)`](#loguserregistered)
+- [`logSearchResultViewed(...)`](#logsearchresultviewed)
+- [`logKeywordSearched(...)`](#logkeywordsearched)
+- [`logLocationSearched(...)`](#loglocationsearched)
+- [`logInvite(...)`](#loginvite)
+- [`logShare(...)`](#logshare)
+- [`logLike(...)`](#loglike)
+- [`logComment(...)`](#logcomment)
+- [`logMediaCaptured(...)`](#logmediacaptured)
+- [`logMediaStarted(...)`](#logmediastarted)
+- [`logMediaStopped(...)`](#logmediastopped)
+- [`logMediaPaused(...)`](#logmediapaused)
+- [`logCustomEvent(...)`](#logcustomevent)
+- [`endTimedEvent(...)`](#endtimedevent)
+- [`setUserId(...)`](#setuserid)
+- [`setAge(...)`](#setage)
+- [`setGender(...)`](#setgender)
+- [`logError(...)`](#logerror)
+- [`logAdClick(...)`](#logadclick)
+- [`logAdImpression(...)`](#logadimpression)
+- [`logAdRewarded(...)`](#logadrewarded)
+- [`logAdSkipped(...)`](#logadskipped)
+- [`logCreditsSpent(...)`](#logcreditsspent)
+- [`logCreditsPurchased(...)`](#logcreditspurchased)
+- [`logCreditsEarned(...)`](#logcreditsearned)
+- [`logAchievementUnlocked(...)`](#logachievementunlocked)
+- [`logLevelCompleted(...)`](#loglevelcompleted)
+- [`logLevelFailed(...)`](#loglevelfailed)
+- [`logLevelUp(...)`](#loglevelup)
+- [`logLevelStarted(...)`](#loglevelstarted)
+- [`logLevelSkip(...)`](#loglevelskip)
+- [`logScorePosted(...)`](#logscoreposted)
+- [`logAppActivated()`](#logappactivated)
+- [`logApplicationSubmitted()`](#logapplicationsubmitted)
+- [`logAddItemToCart(...)`](#logadditemtocart)
+- [`logAddItemToWishList(...)`](#logadditemtowishlist)
+- [`logCompletedCheckout(...)`](#logcompletedcheckout)
+- [`logPaymentInfoAdded(...)`](#logpaymentinfoadded)
+- [`logItemViewed(...)`](#logitemviewed)
+- [`logItemListViewed(...)`](#logitemlistviewed)
+- [`logPurchased(...)`](#logpurchased)
+- [`logPurchaseRefunded(...)`](#logpurchaserefunded)
+- [`logRemoveItemFromCart(...)`](#logremoveitemfromcart)
+- [`logCheckoutInitiated(...)`](#logcheckoutinitiated)
+- [`logFundsDonated(...)`](#logfundsdonated)
+- [`logUserScheduled()`](#loguserscheduled)
+- [`logOfferPresented(...)`](#logofferpresented)
+- [`logTutorialStarted(...)`](#logtutorialstarted)
+- [`logTutorialCompleted(...)`](#logtutorialcompleted)
+- [`logTutorialStepCompleted(...)`](#logtutorialstepcompleted)
+- [`logTutorialSkipped(...)`](#logtutorialskipped)
+- [`logPrivacyPromptDisplayed()`](#logprivacypromptdisplayed)
+- [`logPrivacyOptIn()`](#logprivacyoptin)
+- [`logPrivacyOptOut()`](#logprivacyoptout)
 
 </docgen-index>
 
@@ -142,8 +150,7 @@ Initialize Flurry once within the session by passing through an API key
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logContentRated(...)
 
@@ -159,8 +166,7 @@ Log this event when a user rates a content in the App
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logContentViewed(...)
 
@@ -176,8 +182,7 @@ Log this event when a specific content is viewed by a user
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logContentSaved(...)
 
@@ -193,8 +198,7 @@ Log this event when a user saves the content in the App
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logProductCustomized()
 
@@ -206,8 +210,7 @@ Log this event when a user customizes the App/product
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logSubscriptionStarted(...)
 
@@ -223,8 +226,7 @@ Log this event at the start of a paid subscription for a service or product
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logSubscriptionEnded(...)
 
@@ -240,8 +242,7 @@ Log this event when a user unsubscribes from a paid subscription for a service o
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logGroupJoined(...)
 
@@ -257,8 +258,7 @@ Log this event when user joins a group.
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logGroupLeft(...)
 
@@ -274,8 +274,7 @@ Log this event when user leaves a group
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLogin(...)
 
@@ -291,8 +290,7 @@ Log this event when a user login on the App
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLogout(...)
 
@@ -308,8 +306,7 @@ Log this event when a user logout of the App
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logUserRegistered(...)
 
@@ -325,8 +322,7 @@ Log the event when a user registers (signup). Helps capture the method used to s
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logSearchResultViewed(...)
 
@@ -342,8 +338,7 @@ Log this event when user views search results
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logKeywordSearched(...)
 
@@ -359,8 +354,7 @@ Log this event when a user searches for a keyword using Search
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLocationSearched(...)
 
@@ -376,8 +370,7 @@ Log this event when a user searches for a location using Search
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logInvite(...)
 
@@ -393,8 +386,7 @@ Log this event when a user invites another user
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logShare(...)
 
@@ -410,8 +402,7 @@ Log this event when a user shares content with another user in the App
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLike(...)
 
@@ -427,8 +418,7 @@ Log this event when a user likes a social content. e.g. likeType captures what k
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logComment(...)
 
@@ -444,8 +434,7 @@ Log this event when a user comments or replies on a social post
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logMediaCaptured(...)
 
@@ -461,8 +450,7 @@ Log this event when an image, audio or a video is captured
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logMediaStarted(...)
 
@@ -478,8 +466,7 @@ Log this event when an audio or video starts
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logMediaStopped(...)
 
@@ -495,8 +482,7 @@ Log this event when an audio or video is stopped
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logMediaPaused(...)
 
@@ -512,8 +498,7 @@ Log this event when an audio or video is paused
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logCustomEvent(...)
 
@@ -531,8 +516,7 @@ You may also enable this event to be timed, calling endTimedEvent to terminate i
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### endTimedEvent(...)
 
@@ -546,8 +530,7 @@ endTimedEvent(options: { eventName: string; }) => Promise<{ value: string; }>
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### setUserId(...)
 
@@ -564,8 +547,7 @@ You must call this function prior to starting the Flurry session
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### setAge(...)
 
@@ -582,8 +564,7 @@ You must call this function prior to starting the Flurry session
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### setGender(...)
 
@@ -600,8 +581,7 @@ You must call this function prior to starting the Flurry session
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logError(...)
 
@@ -617,8 +597,7 @@ Use this to log exceptions and/or errors that occur in your app. Flurry will rep
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logAdClick(...)
 
@@ -634,8 +613,7 @@ Log this event when a user clicks on an Ad
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logAdImpression(...)
 
@@ -651,8 +629,7 @@ Log this event when a user views an Ad impression
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logAdRewarded(...)
 
@@ -668,8 +645,7 @@ Log this event when a user is granted a reward for viewing a rewarded Ad
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logAdSkipped(...)
 
@@ -685,8 +661,7 @@ Log this event when a user skips an Ad
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logCreditsSpent(...)
 
@@ -702,8 +677,7 @@ Log this event when a user spends credit in the app
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logCreditsPurchased(...)
 
@@ -719,8 +693,7 @@ Log this event when a user purchases credit in the app
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logCreditsEarned(...)
 
@@ -736,8 +709,7 @@ Log this event when a user earns credit in the app
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logAchievementUnlocked(...)
 
@@ -753,8 +725,7 @@ Log this event when a user unlocks an achievement in the app
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLevelCompleted(...)
 
@@ -770,8 +741,7 @@ Log this event when an App user completes a level
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLevelFailed(...)
 
@@ -787,8 +757,7 @@ Log this event when an App user fails a level
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLevelUp(...)
 
@@ -804,8 +773,7 @@ Log this event when an App user levels up
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLevelStarted(...)
 
@@ -821,8 +789,7 @@ Log this event when an App user starts a level
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logLevelSkip(...)
 
@@ -838,8 +805,7 @@ Log this event when an App user skips a level
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logScorePosted(...)
 
@@ -855,8 +821,7 @@ Log this event when an App user posts his score
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logAppActivated()
 
@@ -868,8 +833,7 @@ Log this event when the App is activated
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logApplicationSubmitted()
 
@@ -881,8 +845,7 @@ Log this event when a user submits an application through the App
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logAddItemToCart(...)
 
@@ -898,8 +861,7 @@ Log this event when an item is added to the cart
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logAddItemToWishList(...)
 
@@ -915,8 +877,7 @@ Log this event when an item is added to the wish list
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logCompletedCheckout(...)
 
@@ -932,8 +893,7 @@ Log this event when checkout is completed or transaction is successfully complet
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logPaymentInfoAdded(...)
 
@@ -949,8 +909,7 @@ Log this event when payment information is added during a checkout process
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logItemViewed(...)
 
@@ -966,8 +925,7 @@ Log this event when an item is viewed
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logItemListViewed(...)
 
@@ -983,8 +941,7 @@ Log this event when a list of items is viewed
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logPurchased(...)
 
@@ -1000,8 +957,7 @@ Log this event when a user does a purchase in the App
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logPurchaseRefunded(...)
 
@@ -1017,8 +973,7 @@ Log this event when a purchase is refunded
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logRemoveItemFromCart(...)
 
@@ -1034,8 +989,7 @@ Log this event when a user removes an item from the cart
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logCheckoutInitiated(...)
 
@@ -1051,8 +1005,7 @@ Log this event when a user starts checkout
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logFundsDonated(...)
 
@@ -1068,8 +1021,7 @@ Log this event when a user donates fund to your App or through the App
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logUserScheduled()
 
@@ -1081,8 +1033,7 @@ Log this event when user schedules an appointment using the App
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logOfferPresented(...)
 
@@ -1098,8 +1049,7 @@ Log this event when an offer is presented to the user
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logTutorialStarted(...)
 
@@ -1115,8 +1065,7 @@ Log this event when a user starts a tutorial
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logTutorialCompleted(...)
 
@@ -1132,8 +1081,7 @@ Log this event when a user completes a tutorial
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logTutorialStepCompleted(...)
 
@@ -1149,8 +1097,7 @@ Log this event when a specific tutorial step is completed
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logTutorialSkipped(...)
 
@@ -1166,8 +1113,7 @@ Log this event when user skips the tutorial
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logPrivacyPromptDisplayed()
 
@@ -1179,8 +1125,7 @@ Log this event when a privacy prompt is displayed
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logPrivacyOptIn()
 
@@ -1192,8 +1137,7 @@ Log this event when a user opts in (on the privacy prompt)
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
-
+---
 
 ### logPrivacyOptOut()
 
@@ -1205,7 +1149,7 @@ Log this event when a user opts out (on the privacy prompt)
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
---------------------
+---
 
 </docgen-api>
 
